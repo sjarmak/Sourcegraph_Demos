@@ -162,8 +162,12 @@ find_task_dir() {
 }
 
 setup_all_tasks() {
+    # Temporarily disable set -e for batch operations so one task failure doesn't stop the loop
+    set +e
+    
     if [ ! -d "$TASK_BASE" ]; then
         print_error "Task directory not found at $TASK_BASE"
+        set -e
         exit 1
     fi
     
@@ -209,7 +213,14 @@ setup_all_tasks() {
             continue
         fi
         
-        setup_workspace "$task_dir" "silent" && ((success++)) || ((failed++))
+        setup_workspace "$task_dir" "silent"
+        local result=$?
+        if [ $result -eq 0 ]; then
+            ((success++))
+        else
+            print_warning "Failed to set up $task_name (exit code: $result)"
+            ((failed++))
+        fi
     done
     
     echo ""
@@ -229,6 +240,9 @@ setup_all_tasks() {
     echo "  cd TASK_NAME-setup"
     echo "  cat RUN_GUIDE.md"
     echo ""
+    
+    # Re-enable set -e
+    set -e
 }
 
 extract_clone_command() {
@@ -354,6 +368,9 @@ setup_workspace() {
         print_info "Suite: $suite_name"
         print_info "Creating workspace: $workspace_dir"
         echo ""
+    else
+        # In silent mode, still output task name for progress
+        echo "Setting up $task_name..."
     fi
     
     # Check if workspace already exists
@@ -394,14 +411,14 @@ setup_workspace() {
     
     # Copy instruction files
     if [ -f "$task_dir/instruction.md" ]; then
-        cp "$task_dir/instruction.md" .
+        cp "$task_dir/instruction.md" . || true
         if [ "$silent" != "silent" ]; then
             print_success "Copied baseline instruction"
         fi
     fi
     
     if [ -f "$task_dir/instruction_mcp.md" ]; then
-        cp "$task_dir/instruction_mcp.md" .
+        cp "$task_dir/instruction_mcp.md" . || true
         if [ "$silent" != "silent" ]; then
             print_success "Copied MCP instruction"
         fi
@@ -410,7 +427,7 @@ setup_workspace() {
     # Copy supporting docs
     for doc in setup.md README.md talk_track.md evaluation.md demo_manifest.json; do
         if [ -f "$task_dir/$doc" ]; then
-            cp "$task_dir/$doc" .
+            cp "$task_dir/$doc" . || true
         fi
     done
     
