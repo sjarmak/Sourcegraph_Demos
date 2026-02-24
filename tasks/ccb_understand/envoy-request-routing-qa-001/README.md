@@ -1,9 +1,9 @@
 # envoy-request-routing-qa-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_understand`
-- Delta: **+0.870** (`0.0` -> `0.87`)
+- Reference verifier delta: **+0.870** (`0.0` -> `0.87`)
 - Comparison mode: `direct`
 
 ## Files

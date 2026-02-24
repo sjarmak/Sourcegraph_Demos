@@ -1,6 +1,6 @@
 # Demo Talk Track (test-unitgen-py-001)
 
-- Why this task: `test-unitgen-py-001` had an MCP positive delta of **+0.520** in the ccb_test audit.
+- Why this task: `test-unitgen-py-001` is a strong demo candidate with a reference verifier delta of **+0.520** in the ccb_test benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.48`, MCP reward `1.0`).
 - Task type: `unit-test-generation` | Language: `python` | Difficulty: `medium`
 

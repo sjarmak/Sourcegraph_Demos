@@ -1,6 +1,6 @@
 # Demo Talk Track (CCX-onboard-050-ds)
 
-- Why this task: `CCX-onboard-050-ds` had an MCP positive delta of **+0.250** in the ccb_mcp_onboarding audit.
+- Why this task: `CCX-onboard-050-ds` is a strong demo candidate with a reference verifier delta of **+0.250** in the ccb_mcp_onboarding benchmark run.
 - Compared configs: `baseline-local-artifact` -> `mcp-remote-artifact` (baseline reward `0.25`, MCP reward `0.5`).
 - Task type: `onboarding-comprehension` | Language: `go` | Difficulty: `hard`
 

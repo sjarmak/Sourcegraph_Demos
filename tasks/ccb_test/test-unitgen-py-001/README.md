@@ -1,9 +1,9 @@
 # test-unitgen-py-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_test`
-- Delta: **+0.520** (`0.48` -> `1.0`)
+- Reference verifier delta: **+0.520** (`0.48` -> `1.0`)
 - Comparison mode: `direct`
 
 ## Files

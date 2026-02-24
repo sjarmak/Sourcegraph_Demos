@@ -1,9 +1,9 @@
 # test-coverage-gap-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_test`
-- Delta: **+0.880** (`0.06` -> `0.94`)
+- Reference verifier delta: **+0.880** (`0.06` -> `0.94`)
 - Comparison mode: `direct`
 
 ## Files

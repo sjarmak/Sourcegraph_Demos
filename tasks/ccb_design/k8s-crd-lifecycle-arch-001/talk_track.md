@@ -1,6 +1,6 @@
 # Demo Talk Track (k8s-crd-lifecycle-arch-001)
 
-- Why this task: `k8s-crd-lifecycle-arch-001` had an MCP positive delta of **+0.770** in the ccb_design audit.
+- Why this task: `k8s-crd-lifecycle-arch-001` is a strong demo candidate with a reference verifier delta of **+0.770** in the ccb_design benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.0`, MCP reward `0.77`).
 - Task type: `architectural_understanding` | Language: `go` | Difficulty: `hard`
 

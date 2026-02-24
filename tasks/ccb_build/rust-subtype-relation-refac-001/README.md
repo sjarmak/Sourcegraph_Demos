@@ -1,9 +1,9 @@
 # rust-subtype-relation-refac-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_build`
-- Delta: **+0.710** (`0.0` -> `0.71`)
+- Reference verifier delta: **+0.710** (`0.0` -> `0.71`)
 - Comparison mode: `direct`
 
 ## Files

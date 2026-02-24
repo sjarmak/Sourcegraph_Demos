@@ -1,9 +1,9 @@
 # flipt-flagexists-refactor-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_build`
-- Delta: **+0.300** (`0.45` -> `0.75`)
+- Reference verifier delta: **+0.300** (`0.45` -> `0.75`)
 - Comparison mode: `direct`
 
 ## Files

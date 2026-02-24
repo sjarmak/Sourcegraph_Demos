@@ -1,9 +1,9 @@
 # openlibrary-solr-boolean-fix-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_fix`
-- Delta: **+0.667** (`0.0` -> `0.6667`)
+- Reference verifier delta: **+0.667** (`0.0` -> `0.6667`)
 - Comparison mode: `direct`
 
 ## Files

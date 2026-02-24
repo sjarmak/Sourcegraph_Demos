@@ -1,6 +1,6 @@
 # Demo Talk Track (terraform-state-backend-handoff-001)
 
-- Why this task: `terraform-state-backend-handoff-001` had an MCP positive delta of **+0.630** in the ccb_understand audit.
+- Why this task: `terraform-state-backend-handoff-001` is a strong demo candidate with a reference verifier delta of **+0.630** in the ccb_understand benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.0`, MCP reward `0.63`).
 - IR/result pattern observed in audit: `Higher-quality context win`.
 - Task type: `team_handoff` | Language: `go` | Difficulty: `hard`

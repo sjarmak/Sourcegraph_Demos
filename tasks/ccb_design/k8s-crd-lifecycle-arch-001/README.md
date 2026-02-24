@@ -1,9 +1,9 @@
 # k8s-crd-lifecycle-arch-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_design`
-- Delta: **+0.770** (`0.0` -> `0.77`)
+- Reference verifier delta: **+0.770** (`0.0` -> `0.77`)
 - Comparison mode: `direct`
 
 ## Files

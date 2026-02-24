@@ -1,6 +1,6 @@
 # Demo Talk Track (etcd-grpc-api-upgrade-001)
 
-- Why this task: `etcd-grpc-api-upgrade-001` had an MCP positive delta of **+0.714** in the ccb_design audit.
+- Why this task: `etcd-grpc-api-upgrade-001` is a strong demo candidate with a reference verifier delta of **+0.714** in the ccb_design benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.0`, MCP reward `0.7143`).
 - IR/result pattern observed in audit: `Execution/quality win after similar retrieval`.
 - Task type: `None` | Language: `None` | Difficulty: `None`

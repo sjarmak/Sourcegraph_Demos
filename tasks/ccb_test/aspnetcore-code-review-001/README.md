@@ -1,9 +1,9 @@
 # aspnetcore-code-review-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_test`
-- Delta: **+0.460** (`0.0` -> `0.46`)
+- Reference verifier delta: **+0.460** (`0.0` -> `0.46`)
 - Comparison mode: `direct`
 
 ## Files

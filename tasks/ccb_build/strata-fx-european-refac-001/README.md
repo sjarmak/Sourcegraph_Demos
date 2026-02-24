@@ -1,9 +1,9 @@
 # strata-fx-european-refac-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_build`
-- Delta: **+0.480** (`0.32` -> `0.8`)
+- Reference verifier delta: **+0.480** (`0.32` -> `0.8`)
 - Comparison mode: `direct`
 
 ## Files

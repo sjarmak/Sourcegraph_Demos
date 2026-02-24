@@ -1,9 +1,9 @@
 # flink-pricing-window-feat-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_build`
-- Delta: **+0.390** (`0.12` -> `0.51`)
+- Reference verifier delta: **+0.390** (`0.12` -> `0.51`)
 - Comparison mode: `direct`
 
 ## Files

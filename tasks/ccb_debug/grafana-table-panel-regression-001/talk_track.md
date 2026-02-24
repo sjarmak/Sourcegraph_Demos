@@ -1,6 +1,6 @@
 # Demo Talk Track (grafana-table-panel-regression-001)
 
-- Why this task: `grafana-table-panel-regression-001` had an MCP positive delta of **+0.300** in the ccb_debug audit.
+- Why this task: `grafana-table-panel-regression-001` is a strong demo candidate with a reference verifier delta of **+0.300** in the ccb_debug benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.6`, MCP reward `0.9`).
 - IR/result pattern observed in audit: `Execution/quality win after similar retrieval`.
 - Task type: `regression_hunt` | Language: `go` | Difficulty: `hard`

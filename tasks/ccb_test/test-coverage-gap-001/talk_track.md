@@ -1,6 +1,6 @@
 # Demo Talk Track (test-coverage-gap-001)
 
-- Why this task: `test-coverage-gap-001` had an MCP positive delta of **+0.880** in the ccb_test audit.
+- Why this task: `test-coverage-gap-001` is a strong demo candidate with a reference verifier delta of **+0.880** in the ccb_test benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.06`, MCP reward `0.94`).
 - Task type: `test-coverage-gap-analysis` | Language: `cpp` | Difficulty: `hard`
 

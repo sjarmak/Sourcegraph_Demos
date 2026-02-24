@@ -1,9 +1,9 @@
 # terraform-plan-pipeline-qa-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_understand`
-- Delta: **+0.950** (`0.0` -> `0.95`)
+- Reference verifier delta: **+0.950** (`0.0` -> `0.95`)
 - Comparison mode: `direct`
 
 ## Files

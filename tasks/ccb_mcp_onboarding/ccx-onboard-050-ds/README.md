@@ -1,9 +1,9 @@
 # CCX-onboard-050-ds
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_mcp_onboarding`
-- Delta: **+0.250** (`0.25` -> `0.5`)
+- Reference verifier delta: **+0.250** (`0.25` -> `0.5`)
 - Comparison mode: `artifact`
 
 ## Files

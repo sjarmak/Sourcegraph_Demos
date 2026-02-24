@@ -1,9 +1,9 @@
 # k8s-scheduler-arch-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_design`
-- Delta: **+0.720** (`0.0` -> `0.72`)
+- Reference verifier delta: **+0.720** (`0.0` -> `0.72`)
 - Comparison mode: `direct`
 
 ## Files

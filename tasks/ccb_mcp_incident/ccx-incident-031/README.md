@@ -1,9 +1,9 @@
 # CCX-incident-031
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_mcp_incident`
-- Delta: **+0.500** (`0.5` -> `1.0`)
+- Reference verifier delta: **+0.500** (`0.5` -> `1.0`)
 - Comparison mode: `artifact`
 
 ## Files

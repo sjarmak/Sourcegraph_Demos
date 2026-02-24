@@ -234,7 +234,7 @@ def render_task_setup(manifest: dict[str, Any]) -> str:
 def render_task_talk_track(manifest: dict[str, Any]) -> str:
     buckets = manifest.get("ir_situations") or []
     lines = [f"# Demo Talk Track ({manifest['task_id']})", ""]
-    lines += [f"- Why this task: `{manifest['task_id']}` had an MCP positive delta of **{manifest['delta']:+.3f}** in the {manifest['suite']} audit."]
+    lines += [f"- Why this task: `{manifest['task_id']}` is a strong demo candidate with a reference verifier delta of **{manifest['delta']:+.3f}** in the {manifest['suite']} benchmark run."]
     lines += [f"- Compared configs: `{manifest['baseline_config']}` -> `{manifest['mcp_config']}` (baseline reward `{manifest['baseline_reward']}`, MCP reward `{manifest['mcp_reward']}`)."]
     if buckets:
         lines += [f"- IR/result pattern observed in audit: {', '.join(f'`{b}`' for b in buckets)}."]
@@ -295,10 +295,10 @@ def task_readme(manifest: dict[str, Any]) -> str:
     return textwrap.dedent(f"""\
     # {manifest['task_id']}
 
-    MCP-positive-delta demo task package from CodeContextBench.
+    Curated demo task package from CodeContextBench.
 
     - Suite: `{manifest['suite']}`
-    - Delta: **{manifest['delta']:+.3f}** (`{manifest['baseline_reward']}` -> `{manifest['mcp_reward']}`)
+    - Reference verifier delta: **{manifest['delta']:+.3f}** (`{manifest['baseline_reward']}` -> `{manifest['mcp_reward']}`)
     - Comparison mode: `{manifest['comparison_mode']}`
 
     ## Files
@@ -471,12 +471,12 @@ def main() -> None:
     lines = [
         "# Task Index",
         "",
-        f"Generated from `{AUDIT_JSON.name}`.",
-        f"Filter: `reward_delta > {DEFAULT_MIN_DELTA}` (using rounded audit delta).",
+        "Generated from the source benchmark report and task manifests.",
+        f"Selection filter: `reference verifier delta > {DEFAULT_MIN_DELTA}` (using rounded delta value).",
         f"Included tasks: **{len(task_index)}**.",
         "",
     ]
-    lines += ["| Rank | Task | Suite | Delta | Mode | Path |", "|---:|---|---|---:|---|---|"]
+    lines += ["| Rank | Task | Suite | Verifier Delta | Mode | Path |", "|---:|---|---|---:|---|---|"]
     for r in task_index:
         lines.append(f"| {r['rank']} | `{r['task_id']}` | `{r['suite']}` | {r['delta']:+.3f} | `{r['comparison_mode']}` | `{r['path']}` |")
     (ROOT / "TASK_INDEX.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

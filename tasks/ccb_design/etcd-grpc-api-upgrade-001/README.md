@@ -1,9 +1,9 @@
 # etcd-grpc-api-upgrade-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_design`
-- Delta: **+0.714** (`0.0` -> `0.7143`)
+- Reference verifier delta: **+0.714** (`0.0` -> `0.7143`)
 - Comparison mode: `direct`
 
 ## Files

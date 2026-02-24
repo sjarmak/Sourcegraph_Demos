@@ -1,9 +1,9 @@
 # CCX-vuln-remed-011
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_mcp_security`
-- Delta: **+0.250** (`0.75` -> `1.0`)
+- Reference verifier delta: **+0.250** (`0.75` -> `1.0`)
 - Comparison mode: `artifact`
 
 ## Files

@@ -1,9 +1,9 @@
 # terraform-state-backend-handoff-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_understand`
-- Delta: **+0.630** (`0.0` -> `0.63`)
+- Reference verifier delta: **+0.630** (`0.0` -> `0.63`)
 - Comparison mode: `direct`
 
 ## Files

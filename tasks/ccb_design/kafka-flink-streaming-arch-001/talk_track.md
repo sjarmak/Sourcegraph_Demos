@@ -1,6 +1,6 @@
 # Demo Talk Track (kafka-flink-streaming-arch-001)
 
-- Why this task: `kafka-flink-streaming-arch-001` had an MCP positive delta of **+0.400** in the ccb_design audit.
+- Why this task: `kafka-flink-streaming-arch-001` is a strong demo candidate with a reference verifier delta of **+0.400** in the ccb_design benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.0`, MCP reward `0.4`).
 - Task type: `architectural_understanding` | Language: `java` | Difficulty: `hard`
 

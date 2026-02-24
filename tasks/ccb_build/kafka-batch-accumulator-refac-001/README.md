@@ -1,9 +1,9 @@
 # kafka-batch-accumulator-refac-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_build`
-- Delta: **+0.360** (`0.32` -> `0.68`)
+- Reference verifier delta: **+0.360** (`0.32` -> `0.68`)
 - Comparison mode: `direct`
 
 ## Files

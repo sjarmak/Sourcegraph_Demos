@@ -1,9 +1,9 @@
 # grpcurl-transitive-vuln-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_secure`
-- Delta: **+0.670** (`0.0` -> `0.67`)
+- Reference verifier delta: **+0.670** (`0.0` -> `0.67`)
 - Comparison mode: `direct`
 
 ## Files

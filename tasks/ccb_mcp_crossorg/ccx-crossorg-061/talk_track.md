@@ -1,6 +1,6 @@
 # Demo Talk Track (CCX-crossorg-061)
 
-- Why this task: `CCX-crossorg-061` had an MCP positive delta of **+0.500** in the ccb_mcp_crossorg audit.
+- Why this task: `CCX-crossorg-061` is a strong demo candidate with a reference verifier delta of **+0.500** in the ccb_mcp_crossorg benchmark run.
 - Compared configs: `baseline-local-artifact` -> `mcp-remote-artifact` (baseline reward `0.5`, MCP reward `1.0`).
 - Task type: `cross-org-discovery` | Language: `go` | Difficulty: `hard`
 

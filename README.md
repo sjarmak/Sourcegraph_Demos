@@ -1,15 +1,15 @@
-# Sourcegraph Demos (Top MCP Positive Delta Tasks)
+# Sourcegraph Demos (Curated Task Set)
 
-This repo packages the **top MCP-positive-delta tasks** from a CodeContextBench audit into a local, harness-agnostic demo kit.
+This repo packages a **curated task set** from CodeContextBench into a local, harness-agnostic demo kit.
 
-Filter used: `reward_delta > 0.2` (using the rounded audit delta shown in the report table).
+Selection filter used for this snapshot: `reference verifier delta > 0.2` (using the rounded delta value from the source report table).
 
 Goal: make it easy to run your own **baseline vs Sourcegraph MCP ablation tests** from your machine (no Docker required, use any harness/agent you prefer).
 
 ## What is included
 
-- `tasks/`: 37 task directories (top MCP-positive-delta subset)
-- `TASK_INDEX.md`: ranked list of included tasks by MCP delta (`> 0.2`)
+- `tasks/`: 37 task directories (curated subset)
+- `TASK_INDEX.md`: ranked list of included tasks by reference verifier delta (`> 0.2`)
 - `data/`: source audit artifacts used to generate this repo
 - `scripts/extract_trace.py`: normalize raw agent outputs/logs into a common trace schema
 - `scripts/compare_trace_metrics.py`: compare baseline vs MCP trace metrics

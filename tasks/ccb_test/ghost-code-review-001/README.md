@@ -1,9 +1,9 @@
 # ghost-code-review-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_test`
-- Delta: **+0.620** (`0.0` -> `0.62`)
+- Reference verifier delta: **+0.620** (`0.0` -> `0.62`)
 - Comparison mode: `direct`
 
 ## Files

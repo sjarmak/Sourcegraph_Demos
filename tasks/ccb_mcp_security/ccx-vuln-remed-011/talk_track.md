@@ -1,6 +1,6 @@
 # Demo Talk Track (CCX-vuln-remed-011)
 
-- Why this task: `CCX-vuln-remed-011` had an MCP positive delta of **+0.250** in the ccb_mcp_security audit.
+- Why this task: `CCX-vuln-remed-011` is a strong demo candidate with a reference verifier delta of **+0.250** in the ccb_mcp_security benchmark run.
 - Compared configs: `baseline-local-artifact` -> `mcp-remote-artifact` (baseline reward `0.75`, MCP reward `1.0`).
 - Task type: `vuln-remediation` | Language: `javascript` | Difficulty: `medium`
 

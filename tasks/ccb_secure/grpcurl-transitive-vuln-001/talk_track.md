@@ -1,6 +1,6 @@
 # Demo Talk Track (grpcurl-transitive-vuln-001)
 
-- Why this task: `grpcurl-transitive-vuln-001` had an MCP positive delta of **+0.670** in the ccb_secure audit.
+- Why this task: `grpcurl-transitive-vuln-001` is a strong demo candidate with a reference verifier delta of **+0.670** in the ccb_secure benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.0`, MCP reward `0.67`).
 - IR/result pattern observed in audit: `Execution/quality win after similar retrieval`.
 - Task type: `transitive_dependency` | Language: `go` | Difficulty: `hard`

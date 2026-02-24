@@ -1,6 +1,6 @@
 # Demo Talk Track (rust-subtype-relation-refac-001)
 
-- Why this task: `rust-subtype-relation-refac-001` had an MCP positive delta of **+0.710** in the ccb_build audit.
+- Why this task: `rust-subtype-relation-refac-001` is a strong demo candidate with a reference verifier delta of **+0.710** in the ccb_build benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.0`, MCP reward `0.71`).
 - Task type: `cross_file_refactoring` | Language: `rust` | Difficulty: `hard`
 

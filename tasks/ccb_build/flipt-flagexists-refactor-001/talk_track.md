@@ -1,6 +1,6 @@
 # Demo Talk Track (flipt-flagexists-refactor-001)
 
-- Why this task: `flipt-flagexists-refactor-001` had an MCP positive delta of **+0.300** in the ccb_build audit.
+- Why this task: `flipt-flagexists-refactor-001` is a strong demo candidate with a reference verifier delta of **+0.300** in the ccb_build benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.45`, MCP reward `0.75`).
 - IR/result pattern observed in audit: `Speed-to-context win`, `Higher-quality context win`, `Execution/quality win after similar retrieval`.
 - Task type: `enterprise_dep_refactor` | Language: `go` | Difficulty: `hard`

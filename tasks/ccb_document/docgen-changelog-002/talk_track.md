@@ -1,6 +1,6 @@
 # Demo Talk Track (docgen-changelog-002)
 
-- Why this task: `docgen-changelog-002` had an MCP positive delta of **+0.300** in the ccb_document audit.
+- Why this task: `docgen-changelog-002` is a strong demo candidate with a reference verifier delta of **+0.300** in the ccb_document benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.7`, MCP reward `1.0`).
 - Task type: `changelog_generation` | Language: `go` | Difficulty: `medium`
 

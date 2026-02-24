@@ -1,6 +1,6 @@
 # Demo Talk Track (aspnetcore-code-review-001)
 
-- Why this task: `aspnetcore-code-review-001` had an MCP positive delta of **+0.460** in the ccb_test audit.
+- Why this task: `aspnetcore-code-review-001` is a strong demo candidate with a reference verifier delta of **+0.460** in the ccb_test benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.0`, MCP reward `0.46`).
 - IR/result pattern observed in audit: `Retrieval rescue`, `Higher-quality context win`.
 - Task type: `code-review` | Language: `csharp` | Difficulty: `hard`

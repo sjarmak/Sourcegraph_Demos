@@ -1,9 +1,9 @@
 # test-integration-002
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_test`
-- Delta: **+0.530** (`0.37` -> `0.9`)
+- Reference verifier delta: **+0.530** (`0.37` -> `0.9`)
 - Comparison mode: `direct`
 
 ## Files

@@ -1,6 +1,6 @@
 # Demo Talk Track (flink-pricing-window-feat-001)
 
-- Why this task: `flink-pricing-window-feat-001` had an MCP positive delta of **+0.390** in the ccb_build audit.
+- Why this task: `flink-pricing-window-feat-001` is a strong demo candidate with a reference verifier delta of **+0.390** in the ccb_build benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.12`, MCP reward `0.51`).
 - Task type: `feature_implementation` | Language: `java` | Difficulty: `hard`
 

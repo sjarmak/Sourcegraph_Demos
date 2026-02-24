@@ -1,10 +1,10 @@
 # Task Index
 
-Generated from `MCP_POSITIVE_DELTAS_VALID_TASKS_STAGING_CURRENT_20260224.json`.
-Filter: `reward_delta > 0.2` (using rounded audit delta).
+Generated from the source benchmark report and task manifests.
+Selection filter: `reference verifier delta > 0.2` (using rounded delta value).
 Included tasks: **37**.
 
-| Rank | Task | Suite | Delta | Mode | Path |
+| Rank | Task | Suite | Verifier Delta | Mode | Path |
 |---:|---|---|---:|---|---|
 | 1 | `cilium-project-orient-001` | `ccb_understand` | +0.960 | `direct` | `tasks/ccb_understand/cilium-project-orient-001` |
 | 2 | `terraform-plan-pipeline-qa-001` | `ccb_understand` | +0.950 | `direct` | `tasks/ccb_understand/terraform-plan-pipeline-qa-001` |

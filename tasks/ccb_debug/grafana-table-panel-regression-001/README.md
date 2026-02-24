@@ -1,9 +1,9 @@
 # grafana-table-panel-regression-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_debug`
-- Delta: **+0.300** (`0.6` -> `0.9`)
+- Reference verifier delta: **+0.300** (`0.6` -> `0.9`)
 - Comparison mode: `direct`
 
 ## Files

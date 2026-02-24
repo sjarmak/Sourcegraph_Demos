@@ -1,6 +1,6 @@
 # Demo Talk Track (strata-fx-european-refac-001)
 
-- Why this task: `strata-fx-european-refac-001` had an MCP positive delta of **+0.480** in the ccb_build audit.
+- Why this task: `strata-fx-european-refac-001` is a strong demo candidate with a reference verifier delta of **+0.480** in the ccb_build benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.32`, MCP reward `0.8`).
 - IR/result pattern observed in audit: `Broader search win`.
 - Task type: `cross_file_refactoring` | Language: `java` | Difficulty: `hard`

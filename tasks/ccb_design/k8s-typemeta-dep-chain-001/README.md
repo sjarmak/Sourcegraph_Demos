@@ -1,9 +1,9 @@
 # k8s-typemeta-dep-chain-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_design`
-- Delta: **+0.340** (`0.33` -> `0.67`)
+- Reference verifier delta: **+0.340** (`0.33` -> `0.67`)
 - Comparison mode: `direct`
 
 ## Files

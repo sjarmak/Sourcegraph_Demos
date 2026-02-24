@@ -1,6 +1,6 @@
 # Demo Talk Track (k8s-typemeta-dep-chain-001)
 
-- Why this task: `k8s-typemeta-dep-chain-001` had an MCP positive delta of **+0.340** in the ccb_design audit.
+- Why this task: `k8s-typemeta-dep-chain-001` is a strong demo candidate with a reference verifier delta of **+0.340** in the ccb_design benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.33`, MCP reward `0.67`).
 - Task type: `None` | Language: `None` | Difficulty: `None`
 

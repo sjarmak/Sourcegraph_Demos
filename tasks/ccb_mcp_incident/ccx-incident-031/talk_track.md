@@ -1,6 +1,6 @@
 # Demo Talk Track (CCX-incident-031)
 
-- Why this task: `CCX-incident-031` had an MCP positive delta of **+0.500** in the ccb_mcp_incident audit.
+- Why this task: `CCX-incident-031` is a strong demo candidate with a reference verifier delta of **+0.500** in the ccb_mcp_incident benchmark run.
 - Compared configs: `baseline-local-artifact` -> `mcp-remote-artifact` (baseline reward `0.5`, MCP reward `1.0`).
 - Task type: `incident-debug` | Language: `go` | Difficulty: `hard`
 

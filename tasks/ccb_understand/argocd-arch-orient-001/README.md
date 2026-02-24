@@ -1,9 +1,9 @@
 # argocd-arch-orient-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_understand`
-- Delta: **+0.810** (`0.0` -> `0.81`)
+- Reference verifier delta: **+0.810** (`0.0` -> `0.81`)
 - Comparison mode: `direct`
 
 ## Files

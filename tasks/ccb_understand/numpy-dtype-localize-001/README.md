@@ -1,9 +1,9 @@
 # numpy-dtype-localize-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_understand`
-- Delta: **+0.933** (`0.0` -> `0.9333`)
+- Reference verifier delta: **+0.933** (`0.0` -> `0.9333`)
 - Comparison mode: `direct`
 
 ## Files

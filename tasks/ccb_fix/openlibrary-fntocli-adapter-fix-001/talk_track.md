@@ -1,6 +1,6 @@
 # Demo Talk Track (openlibrary-fntocli-adapter-fix-001)
 
-- Why this task: `openlibrary-fntocli-adapter-fix-001` had an MCP positive delta of **+0.333** in the ccb_fix audit.
+- Why this task: `openlibrary-fntocli-adapter-fix-001` is a strong demo candidate with a reference verifier delta of **+0.333** in the ccb_fix benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.6667`, MCP reward `1.0`).
 - IR/result pattern observed in audit: `Higher-quality context win`.
 - Task type: `ccb_swebenchpro` | Language: `None` | Difficulty: `None`

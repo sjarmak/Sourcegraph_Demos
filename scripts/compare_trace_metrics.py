@@ -112,7 +112,7 @@ def main() -> None:
     print(f"# {title}")
     if manifest:
         print(f"- Suite: `{manifest['suite']}` | Mode: `{manifest['comparison_mode']}`")
-        print(f"- Audit delta reference: {manifest['delta']:+.3f} ({manifest['baseline_reward']} -> {manifest['mcp_reward']})")
+        print(f"- Reference verifier delta: {manifest['delta']:+.3f} ({manifest['baseline_reward']} -> {manifest['mcp_reward']})")
     print(f"- Harness guesses: baseline=`{bls.get('harness_guess')}`, mcp=`{mcs.get('harness_guess')}`")
     print()
     print("| Metric | Baseline | MCP | Delta |")

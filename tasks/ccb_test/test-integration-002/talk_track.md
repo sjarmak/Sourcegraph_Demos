@@ -1,6 +1,6 @@
 # Demo Talk Track (test-integration-002)
 
-- Why this task: `test-integration-002` had an MCP positive delta of **+0.530** in the ccb_test audit.
+- Why this task: `test-integration-002` is a strong demo candidate with a reference verifier delta of **+0.530** in the ccb_test benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.37`, MCP reward `0.9`).
 - Task type: `integration-test-authoring` | Language: `go` | Difficulty: `hard`
 

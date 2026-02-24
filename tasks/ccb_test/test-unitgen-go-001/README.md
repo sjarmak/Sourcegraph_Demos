@@ -1,9 +1,9 @@
 # test-unitgen-go-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_test`
-- Delta: **+0.380** (`0.62` -> `1.0`)
+- Reference verifier delta: **+0.380** (`0.62` -> `1.0`)
 - Comparison mode: `direct`
 
 ## Files

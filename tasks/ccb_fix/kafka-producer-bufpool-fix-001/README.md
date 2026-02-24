@@ -1,9 +1,9 @@
 # kafka-producer-bufpool-fix-001
 
-MCP-positive-delta demo task package from CodeContextBench.
+Curated demo task package from CodeContextBench.
 
 - Suite: `ccb_fix`
-- Delta: **+0.780** (`0.0` -> `0.78`)
+- Reference verifier delta: **+0.780** (`0.0` -> `0.78`)
 - Comparison mode: `direct`
 
 ## Files

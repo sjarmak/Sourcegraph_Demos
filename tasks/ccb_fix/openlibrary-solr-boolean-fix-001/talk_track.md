@@ -1,6 +1,6 @@
 # Demo Talk Track (openlibrary-solr-boolean-fix-001)
 
-- Why this task: `openlibrary-solr-boolean-fix-001` had an MCP positive delta of **+0.667** in the ccb_fix audit.
+- Why this task: `openlibrary-solr-boolean-fix-001` is a strong demo candidate with a reference verifier delta of **+0.667** in the ccb_fix benchmark run.
 - Compared configs: `baseline-local-direct` -> `mcp-remote-direct` (baseline reward `0.0`, MCP reward `0.6667`).
 - IR/result pattern observed in audit: `Execution/quality win after similar retrieval`.
 - Task type: `ccb_swebenchpro` | Language: `None` | Difficulty: `None`
