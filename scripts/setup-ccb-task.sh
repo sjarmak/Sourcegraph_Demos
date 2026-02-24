@@ -242,40 +242,89 @@ setup_all_tasks() {
     set -e
 }
 
-extract_clone_command() {
+extract_clone_commands() {
     local setup_file="$1"
     local envfile="${2:-Dockerfile}"
-    
+    local python_output=""
+
     # Try JSON first (demo_manifest.json format)
     if [[ "$setup_file" == *.json ]] && command -v python3 &> /dev/null; then
-        python3 << PYEOF 2>/dev/null
+        python_output=$(python3 << PYEOF 2>/dev/null
 import json
 try:
     with open("$setup_file") as f:
         data = json.load(f)
-        cmds = data.get("clone_commands_by_envfile", {})
-        if "$envfile" in cmds and cmds["$envfile"]:
-            print(cmds["$envfile"][0])
-except:
+        cmds = [cmd for cmd in data.get("clone_commands_by_envfile", {}).get("$envfile", []) if cmd]
+    if cmds:
+        print("\n".join(cmds))
+except Exception:
     pass
 PYEOF
+        )
+
+        if [ -n "$python_output" ]; then
+            printf '%s\n' "$python_output"
+            return 0
+        fi
     fi
     
     # Fallback: parse from setup.md
     # Extract section starting with "### Dockerfile"
     local in_section=0
+    local found=1
     while IFS= read -r line; do
         if [[ "$line" == "### $envfile" ]]; then
             in_section=1
+            found=0
         elif [[ "$line" == "### "* ]] && [ $in_section -eq 1 ]; then
             break
-        elif [ $in_section -eq 1 ] && [[ "$line" == git\ clone* ]]; then
-            echo "$line"
-            return 0
+        elif [ $in_section -eq 1 ]; then
+            local trimmed="${line#${line%%[![:space:]]*}}"
+            if [[ "$trimmed" == git\ clone* ]]; then
+                echo "$trimmed"
+                found=0
+            fi
         fi
     done < "$setup_file"
-    
-    return 1
+
+    if [ $found -eq 0 ]; then
+        return 0
+    fi
+
+    # Last resort: grab any git clone commands in setup.md when no structured section exists
+    if [[ "$setup_file" == *.md ]]; then
+        local loose_cmds=()
+        while IFS= read -r line; do
+            local trimmed="${line#${line%%[![:space:]]*}}"
+            trimmed="${trimmed%${trimmed##*[![:space:]]}}"
+            if [[ "$trimmed" == git\ clone* ]]; then
+                loose_cmds+=("$trimmed")
+            fi
+        done < "$setup_file"
+
+        if [ ${#loose_cmds[@]} -gt 0 ]; then
+            printf '%s\n' "${loose_cmds[@]}"
+            return 0
+        fi
+    fi
+
+    return $found
+}
+
+rewrite_clone_command_for_local() {
+    local raw_cmd="$1"
+    local source_dir="$2"
+    local escaped_source_dir
+    local workspace_placeholder='$WORKSPACE'
+    local workspace_brace_placeholder='${WORKSPACE}'
+
+    escaped_source_dir=$(printf '%q' "$source_dir")
+
+    local fixed_cmd="$raw_cmd"
+    fixed_cmd=${fixed_cmd//\/workspace/$escaped_source_dir}
+    fixed_cmd=${fixed_cmd//${workspace_placeholder}/$escaped_source_dir}
+    fixed_cmd=${fixed_cmd//${workspace_brace_placeholder}/$escaped_source_dir}
+    echo "$fixed_cmd"
 }
 
 extract_mcp_repo() {
@@ -319,38 +368,98 @@ PYEOF
     fi
 }
 
+get_clone_commands_for_task() {
+    local task_dir="$1"
+    local envfile="${2:-Dockerfile}"
+    local candidates=("$task_dir/demo_manifest.json" "$task_dir/setup.md")
+    local env_candidates=()
+    local env_seen=""
+
+    if [ -n "$envfile" ]; then
+        env_candidates+=("$envfile")
+    fi
+    env_candidates+=("Dockerfile" "Dockerfile.sg_only" "Dockerfile.artifact_only" "Dockerfile.baseline" "Dockerfile.base")
+
+    for env in "${env_candidates[@]}"; do
+        [ -n "$env" ] || continue
+        if [[ " $env_seen " == *" $env "* ]]; then
+            continue
+        fi
+        env_seen+=" $env"
+
+        for candidate in "${candidates[@]}"; do
+            [ -f "$candidate" ] || continue
+            local cmds=()
+            while IFS= read -r cmd; do
+                [ -n "$cmd" ] && cmds+=("$cmd")
+            done < <(extract_clone_commands "$candidate" "$env" 2>/dev/null || true)
+
+            if [ ${#cmds[@]} -gt 0 ]; then
+                printf '%s\n' "${cmds[@]}"
+                return 0
+            fi
+        done
+    done
+
+    return 1
+}
+
 clone_source_code() {
     local task_dir="$1"
     local workspace_dir="$2"
-    local clone_cmd
-    
-    # Find setup source
-    local setup_file=""
-    if [ -f "$task_dir/demo_manifest.json" ]; then
-        setup_file="$task_dir/demo_manifest.json"
-    elif [ -f "$task_dir/setup.md" ]; then
-        setup_file="$task_dir/setup.md"
-    else
+    local clone_cmds=()
+
+    while IFS= read -r cmd; do
+        [ -n "$cmd" ] && clone_cmds+=("$cmd")
+    done < <(get_clone_commands_for_task "$task_dir" "Dockerfile" 2>/dev/null || true)
+
+    if [ ${#clone_cmds[@]} -eq 0 ]; then
         return 1
     fi
-    
-    # Extract primary Dockerfile clone command
-    clone_cmd=$(extract_clone_command "$setup_file" "Dockerfile")
-    if [ -z "$clone_cmd" ]; then
-        return 1
-    fi
-    
-    # Execute clone in source directory
+
     mkdir -p "$workspace_dir/source"
-    cd "$workspace_dir/source"
-    
-    eval "$clone_cmd" 2>/dev/null || {
-        cd - > /dev/null
-        return 1
-    }
-    
+    cd "$workspace_dir/source" || return 1
+    local source_dir=$(pwd)
+
+    for cmd in "${clone_cmds[@]}"; do
+        local adjusted_cmd
+        adjusted_cmd=$(rewrite_clone_command_for_local "$cmd" "$source_dir")
+        if ! eval "$adjusted_cmd"; then
+            cd - > /dev/null
+            return 1
+        fi
+    done
+
     cd - > /dev/null
     return 0
+}
+
+print_manual_clone_help() {
+    local task_dir="$1"
+    local workspace_dir="$2"
+    
+    local commands=()
+    while IFS= read -r cmd; do
+        [ -n "$cmd" ] && commands+=("$cmd")
+    done < <(get_clone_commands_for_task "$task_dir" "Dockerfile" 2>/dev/null || true)
+    
+    if [ ${#commands[@]} -eq 0 ]; then
+        echo "  See setup.md for clone instructions"
+        return
+    fi
+
+    local source_dir="$workspace_dir/source"
+    if [ -d "$source_dir" ]; then
+        source_dir=$(cd "$source_dir" && pwd)
+    fi
+
+    echo "  Run the following inside $source_dir:"
+    for cmd in "${commands[@]}"; do
+        [ -z "$cmd" ] && continue
+        local adjusted
+        adjusted=$(rewrite_clone_command_for_local "$cmd" "$source_dir")
+        echo "    $adjusted"
+    done
 }
 
 setup_workspace() {
@@ -359,6 +468,8 @@ setup_workspace() {
     local task_name=$(basename "$task_dir")
     local suite_name=$(basename $(dirname "$task_dir"))
     local workspace_dir="${task_name}-setup"
+    local orig_dir=$(pwd)
+    local workspace_path="$orig_dir/$workspace_dir"
     
     if [ "$silent" != "silent" ]; then
         print_info "Task: $task_name"
@@ -390,9 +501,6 @@ setup_workspace() {
     if [ "$workspace_exists" = false ]; then
         mkdir -p "$workspace_dir"
     fi
-    
-    # Save original directory
-    local orig_dir=$(pwd)
     
     cd "$workspace_dir"
     
@@ -445,19 +553,19 @@ setup_workspace() {
         echo ""
         print_info "Setting up source code for baseline..."
     fi
-    if clone_source_code "$task_dir" "$workspace_dir"; then
+    if clone_source_code "$task_dir" "$workspace_path"; then
         if [ "$silent" != "silent" ]; then
             print_success "Source code cloned to $workspace_dir/source"
         fi
     else
         if [ "$silent" != "silent" ]; then
             print_warning "Could not auto-clone source code"
-            echo "  Run manually: cd $workspace_dir/source && $(extract_clone_command "$task_dir/demo_manifest.json" 2>/dev/null || extract_clone_command "$task_dir/setup.md" 2>/dev/null)"
+            print_manual_clone_help "$task_dir" "$workspace_path"
         fi
     fi
     
     # Create RUN_GUIDE.md AFTER cloning (so source status is accurate)
-    cd "$workspace_dir"
+    cd "$workspace_path"
     generate_run_guide "." "$task_name" "$suite_name"
     cd "$orig_dir"
     
