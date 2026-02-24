@@ -34,6 +34,9 @@ else
     TASK_BASE="${TASK_BASE:-./tasks}"
 fi
 
+# Convert TASK_BASE to absolute path so it works after cd operations
+TASK_BASE="$(cd "$TASK_BASE" 2>/dev/null && pwd)" || TASK_BASE="."
+
 # Functions
 print_header() {
     echo ""
