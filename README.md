@@ -6,7 +6,9 @@ Selection filter used for this snapshot: `reference verifier delta > 0.2` (using
 
 Goal: make it easy to run your own **baseline vs Sourcegraph MCP ablation tests** from your machine (no Docker required, use any harness/agent you prefer).
 
-## 🚀 Quick Setup (3 steps)
+## 🚀 Quick Setup
+
+### Option A: Single Task (2 minutes)
 
 ```bash
 # 1. Clone the repo
@@ -21,13 +23,28 @@ cd cilium-project-orient-001-setup
 cat RUN_GUIDE.md
 ```
 
-That's it! The workspace includes:
+### Option B: All 37 Tasks (10 minutes)
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/sjarmak/Sourcegraph_Demos.git
+cd Sourcegraph_Demos
+
+# 2. Bulk setup all tasks
+./scripts/setup-ccb-task.sh --setup-all
+
+# 3. Pick a task and start
+cd cilium-project-orient-001-setup
+cat RUN_GUIDE.md
+```
+
+Each workspace includes:
 - ✅ Pre-cloned source code for baseline
 - ✅ Task instructions (baseline + MCP)
 - ✅ Scoring scripts & ground truth
 - ✅ Comprehensive execution guide
 
-**See `SETUP_SCRIPT_GUIDE.md` for full documentation** (list tasks, batch setup, advanced options).
+**See `SETUP_SCRIPT_GUIDE.md` for full documentation** (list tasks, advanced options).
 
 ---
 
