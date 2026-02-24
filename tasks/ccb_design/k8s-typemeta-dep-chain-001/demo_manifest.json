@@ -62,19 +62,23 @@
       "version": null
     }
   ],
-  "local_clone_commands": [
-    "# Dockerfile",
-    "git clone --depth 1 https://github.com/sg-evals/kubernetes--31bf3ed4.git kubernetes",
-    "git clone --depth 1 https://github.com/sg-evals/api--f32ed1d6.git api",
-    "git clone --depth 1 https://github.com/sg-evals/apimachinery--b2e9f88f.git apimachinery",
-    "# Dockerfile.artifact_only",
-    "git clone https://github.com/kubernetes/kubernetes.git kubernetes && cd kubernetes && git checkout 31bf3ed48b91b67e5003d8df1b3bd0b918d1fb94",
-    "git clone https://github.com/kubernetes/api.git api && cd api && git checkout f32ed1d60cf0787a512bebd6c06a4b84ae0b7cc7",
-    "git clone https://github.com/kubernetes/apimachinery.git apimachinery && cd apimachinery && git checkout b2e9f88ff6d4c50c13061a53b1239c7707354eda"
-  ],
-  "dependency_hints": [
-    "apk add --no-cache git bash python3",
-    "apk add --no-cache git python3 curl bash"
+  "clone_commands_by_envfile": {
+    "Dockerfile": [
+      "git clone --depth 1 https://github.com/sg-evals/kubernetes--31bf3ed4.git kubernetes",
+      "git clone --depth 1 https://github.com/sg-evals/api--f32ed1d6.git api",
+      "git clone --depth 1 https://github.com/sg-evals/apimachinery--b2e9f88f.git apimachinery"
+    ],
+    "Dockerfile.artifact_only": [
+      "git clone https://github.com/kubernetes/kubernetes.git kubernetes && cd kubernetes && git checkout 31bf3ed48b91b67e5003d8df1b3bd0b918d1fb94",
+      "git clone https://github.com/kubernetes/api.git api && cd api && git checkout f32ed1d60cf0787a512bebd6c06a4b84ae0b7cc7",
+      "git clone https://github.com/kubernetes/apimachinery.git apimachinery && cd apimachinery && git checkout b2e9f88ff6d4c50c13061a53b1239c7707354eda"
+    ]
+  },
+  "required_tools": [
+    "git",
+    "curl",
+    "python3",
+    "go"
   ],
   "ir_situations": []
 }

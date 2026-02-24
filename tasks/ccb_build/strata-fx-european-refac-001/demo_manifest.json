@@ -36,9 +36,13 @@
       "version": null
     }
   ],
-  "local_clone_commands": [],
-  "dependency_hints": [
-    "apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip maven ca-certificates && rm -rf /var/lib/apt/lists/*"
+  "clone_commands_by_envfile": {},
+  "required_tools": [
+    "git",
+    "curl",
+    "python3",
+    "java",
+    "maven"
   ],
   "ir_situations": [
     "Broader search win"

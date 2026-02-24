@@ -118,6 +118,162 @@ def extract_dep_hints(docker_text: str) -> list[str]:
     return hints
 
 
+def extract_package_names(docker_text: str) -> set[str]:
+    pkgs: set[str] = set()
+    for block in extract_run_blocks(docker_text):
+        for pat in [r"apt-get install -y(?:\s+--no-install-recommends)?\s+(.+)", r"apk add(?:\s+--no-cache)?\s+(.+)"]:
+            m = re.search(pat, block)
+            if not m:
+                continue
+            tail = m.group(1).split("&&")[0].strip()
+            for tok in re.split(r"\s+", tail):
+                if not tok or tok.startswith("-"):
+                    continue
+                pkgs.add(tok.strip())
+    return pkgs
+
+
+def detect_required_tools(docker_texts: dict[str, str], task_language: str | None) -> list[str]:
+    merged = "\n".join(docker_texts.values())
+    text = merged.lower()
+    pkgs = {p.lower() for p in extract_package_names(merged)}
+    tools: set[str] = set()
+
+    if "git clone" in text or "git" in pkgs:
+        tools.add("git")
+    if "curl" in text or "curl" in pkgs:
+        tools.add("curl")
+    if "python3" in text or "python3" in pkgs or "python:" in text:
+        tools.add("python3")
+    if "jq" in text or "jq" in pkgs:
+        tools.add("jq")
+    if "make" in text or "make" in pkgs:
+        tools.add("make")
+    if any(x in text for x in ["build-essential", "gcc", "g++", "clang", "musl-dev", "libc-dev"]):
+        tools.add("c-build-tools")
+
+    if any(x in text for x in ["golang-go", "golang:", " go build", " go test", "go install"]) or "golang-go" in pkgs:
+        tools.add("go")
+    if any(x in text for x in ["nodejs", "npm ", "npm install", "yarn ", "pnpm "]) or "nodejs" in pkgs or "npm" in pkgs:
+        tools.update({"nodejs", "npm"})
+    if any(x in text for x in ["openjdk", " java ", "eclipse-temurin", "jdk"]) or any(p.startswith("openjdk") for p in pkgs):
+        tools.add("java")
+    if "maven" in text or "mvn " in text or "maven" in pkgs:
+        tools.add("maven")
+    if any(x in text for x in ["dotnet", "aspnet", "mcr.microsoft.com/dotnet"]) or any("dotnet" in p for p in pkgs):
+        tools.add("dotnet")
+    if any(x in text for x in ["cargo ", "rustc", "rustup", "cargo install"]) or "cargo" in pkgs or "rustc" in pkgs:
+        tools.update({"rust", "cargo"})
+
+    lang = (task_language or "").lower()
+    if lang == "go":
+        tools.add("go")
+    elif lang in {"python", "py"}:
+        tools.add("python3")
+    elif lang in {"javascript", "typescript", "js", "ts"}:
+        tools.update({"nodejs", "npm"})
+    elif lang in {"java", "kotlin", "scala"}:
+        tools.add("java")
+    elif lang in {"c#", "csharp", "dotnet"}:
+        tools.add("dotnet")
+    elif lang == "rust":
+        tools.update({"rust", "cargo"})
+
+    ordered = ["git", "curl", "python3", "jq", "make", "c-build-tools", "go", "nodejs", "npm", "java", "maven", "dotnet", "rust", "cargo"]
+    return [t for t in ordered if t in tools]
+
+
+def render_os_install_instructions(tools: list[str]) -> str:
+    linux_map = {
+        "git": "git", "curl": "curl", "python3": "python3 python3-pip", "jq": "jq", "make": "make",
+        "c-build-tools": "build-essential", "go": "golang-go", "nodejs": "nodejs", "npm": "npm",
+        "java": "openjdk-17-jdk", "maven": "maven", "dotnet": "dotnet-sdk-8.0", "rust": "rustc", "cargo": "cargo",
+    }
+    mac_map = {
+        "git": "git", "curl": "curl", "python3": "python", "jq": "jq", "make": "make",
+        "c-build-tools": "llvm", "go": "go", "nodejs": "node", "npm": "node",
+        "java": "openjdk@17", "maven": "maven", "dotnet": "dotnet-sdk", "rust": "rustup-init", "cargo": "rustup-init",
+    }
+    win_map = {
+        "git": "Git.Git", "curl": "curl.curl", "python3": "Python.Python.3.11", "jq": "jqlang.jq",
+        "make": "GnuWin32.Make", "c-build-tools": "Microsoft.VisualStudio.2022.BuildTools",
+        "go": "GoLang.Go", "nodejs": "OpenJS.NodeJS.LTS", "npm": "OpenJS.NodeJS.LTS",
+        "java": "EclipseAdoptium.Temurin.17.JDK", "maven": "Apache.Maven", "dotnet": "Microsoft.DotNet.SDK.8",
+        "rust": "Rustlang.Rustup", "cargo": "Rustlang.Rustup",
+    }
+
+    def pkgs(mapping: dict[str, str]) -> list[str]:
+        out: list[str] = []
+        for t in tools:
+            pkg = mapping.get(t)
+            if pkg and pkg not in out:
+                out.append(pkg)
+        return out
+
+    linux_pkgs = pkgs(linux_map)
+    mac_pkgs = pkgs(mac_map)
+    win_pkgs = pkgs(win_map)
+
+    lines: list[str] = []
+    lines.append("## Dependencies (Linux / macOS / Windows)")
+    lines.append("")
+    lines.append("Install these tools before running the task locally:")
+    lines.append("")
+    lines.append("- Required tools: " + (", ".join(f"`{t}`" for t in tools) if tools else "`git`, `python3`, and the task runtime/toolchain`"))
+    lines.append("")
+    lines.append("### Linux (Ubuntu/Debian)")
+    lines.append("")
+    lines.append("```bash")
+    lines.append("sudo apt-get update")
+    if linux_pkgs:
+        lines.append("sudo apt-get install -y " + " ".join(linux_pkgs))
+    else:
+        lines.append("# Install required tools manually")
+    if "dotnet" in tools:
+        lines.append("# If dotnet-sdk is unavailable, install the .NET SDK from Microsoft package repos.")
+    lines.append("```")
+    lines.append("")
+    lines.append("### macOS (Homebrew)")
+    lines.append("")
+    lines.append("```bash")
+    lines.append("# Install Homebrew first if needed: https://brew.sh/")
+    if mac_pkgs:
+        lines.append("brew install " + " ".join(mac_pkgs))
+    else:
+        lines.append("# Install required tools manually")
+    if "rust" in tools or "cargo" in tools:
+        lines.append("# `rustup-init` installs both rustc and cargo.")
+    if "java" in tools:
+        lines.append("# Set JAVA_HOME if your task/verifier needs it.")
+    lines.append("```")
+    lines.append("")
+    lines.append("### Windows (PowerShell)")
+    lines.append("")
+    lines.append("Windows note: WSL2 is often the easiest option for shell-heavy verifiers, but native PowerShell + winget works for many tasks.")
+    lines.append("")
+    lines.append("```powershell")
+    if win_pkgs:
+        for pkg in win_pkgs:
+            lines.append(f"winget install --id {pkg} -e")
+    else:
+        lines.append("# Install required tools manually")
+    if "java" in tools:
+        lines.append("# Set JAVA_HOME after JDK installation if required.")
+    lines.append("```")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def envfile_role(envfile: str) -> str:
+    if envfile == "Dockerfile":
+        return "Primary local checkout/environment (recommended starting point for local runs)."
+    if envfile == "Dockerfile.artifact_only":
+        return "Artifact-output local variant (use when you want a minimal local checkout and plan to produce an artifact like `answer.json`)."
+    if envfile == "Dockerfile.sg_only":
+        return "Sourcegraph/MCP-only benchmark variant (kept for provenance; usually not the local starting point)."
+    return "Alternative environment variant."
+
+
 def parse_task_style(task: dict[str, Any], audit_entry: dict[str, Any]) -> str:
     cfg = audit_entry.get("mcp_config", "")
     if cfg.endswith("-artifact"):
@@ -157,10 +313,10 @@ def render_task_setup(manifest: dict[str, Any]) -> str:
     task_id = manifest["task_id"]
     mode = manifest["comparison_mode"]
     outputs = manifest.get("output_paths") or []
-    direct_clones = manifest.get("local_clone_commands") or []
+    clone_cmds_by_env = manifest.get("clone_commands_by_envfile") or {}
     resource_repos = manifest.get("available_resource_repos") or []
     mirrors = manifest.get("mcp_mirror_repos") or []
-    dep_hints = manifest.get("dependency_hints") or []
+    required_tools = manifest.get("required_tools") or []
     lines: list[str] = []
     lines.append(f"# Setup ({task_id})")
     lines.append("")
@@ -174,15 +330,42 @@ def render_task_setup(manifest: dict[str, Any]) -> str:
     lines.append("- `SOURCEGRAPH_ACCESS_TOKEN` (Sourcegraph access token for MCP server)")
     lines.append("- Harness auth vars (see `docs/HARNESS_MCP_SETUP.md`): e.g. `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`, etc.")
     lines.append("")
-    lines.append("## Local repo checkout (baseline/direct or local reading)")
+    lines.append("## Local repo checkout (which one to use)")
     lines.append("")
-    if direct_clones:
-        lines.append("Clone commands inferred from the original CCB task Dockerfiles (pinned when present):")
+    if clone_cmds_by_env:
+        lines.append("Use the following checkout commands based on the run style you want to reproduce:")
         lines.append("")
-        lines.append("```bash")
-        for c in direct_clones:
-            lines.append(c)
-        lines.append("```")
+        has_primary = "Dockerfile" in clone_cmds_by_env
+        has_artifact_variant = "Dockerfile.artifact_only" in clone_cmds_by_env
+        for envfile, cmds in clone_cmds_by_env.items():
+            lines.append(f"### {envfile}")
+            lines.append("")
+            lines.append(envfile_role(envfile))
+            lines.append("")
+            lines.append("```bash")
+            for c in cmds:
+                lines.append(c)
+            lines.append("```")
+            lines.append("")
+        lines.append("Recommended local usage:")
+        if mode == "direct":
+            if has_primary:
+                lines.append("- Baseline run (`instruction.md`): use the **primary local checkout** (`Dockerfile` section).")
+            elif has_artifact_variant:
+                lines.append("- Baseline run (`instruction.md`): use the available checkout variant (`Dockerfile.artifact_only` section) and keep the task output format from `instruction.md`.")
+            else:
+                lines.append("- Baseline run (`instruction.md`): use any checkout variant listed above that provides the needed local sources.")
+            lines.append("- MCP run (`instruction_mcp.md`): usually reuse the same local checkout and enable Sourcegraph MCP.")
+            lines.append("- `Dockerfile.artifact_only` / `Dockerfile.sg_only` variants are optional and mostly useful if you want to mimic those benchmark modes.")
+        else:
+            if has_primary:
+                lines.append("- Artifact tasks still often use a local checkout for inspection/tests; start with the **primary local checkout** (`Dockerfile` section).")
+            elif has_artifact_variant:
+                lines.append("- Start with the available `Dockerfile.artifact_only` checkout for local inspection/testing and produce the requested artifact output.")
+            else:
+                lines.append("- Use any checkout variant listed above for local inspection/testing before producing the requested artifact output.")
+            lines.append("- `Dockerfile.artifact_only` is a good minimal option when present.")
+            lines.append("- `Dockerfile.sg_only` is usually benchmark-provenance only; local ablations typically use normal checkouts plus MCP.")
     elif resource_repos:
         lines.append("Optional local clones (derived from instruction resources):")
         lines.append("")
@@ -213,13 +396,8 @@ def render_task_setup(manifest: dict[str, Any]) -> str:
     else:
         lines.append("- See `instruction_mcp.md` for the exact Sourcegraph repo scope.")
     lines.append("")
-    if dep_hints:
-        lines.append("## Dependency hints (from task Dockerfiles)")
-        lines.append("")
-        lines.append("These are not mandatory if your harness already provides them, but they reflect the CCB task environment:")
-        for h in dep_hints:
-            lines.append(f"- `{h}`")
-        lines.append("")
+    lines.append(render_os_install_instructions(required_tools).rstrip())
+    lines.append("")
     lines.append("## Run pattern (local ablation)")
     lines.append("")
     lines.append("1. Run the task with `instruction.md` (baseline/no MCP or local-only variant).")
@@ -309,7 +487,7 @@ def task_readme(manifest: dict[str, Any]) -> str:
     - `evaluation.md`: scoring/comparison workflow
     - `demo_manifest.json`: machine-readable metadata for scripts and indexing
     - `eval/`: copied task verifier/oracle assets from CCB
-    - `environment/`: original task Dockerfiles (for provenance and dependency hints)
+    - `environment/`: original task Dockerfiles (for provenance)
     """)
 
 
@@ -361,18 +539,11 @@ def main() -> None:
         env_dir = src_dir / "environment"
         docker_texts = {p.name: read_text(p) for p in sorted(env_dir.glob("Dockerfile*"))}
 
-        clone_cmds: list[str] = []
-        dep_hints: list[str] = []
+        clone_cmds_by_envfile: dict[str, list[str]] = {}
         for name, txt in docker_texts.items():
-            for c in extract_git_clone_commands(txt):
-                label = f"# {name}"
-                if label not in clone_cmds:
-                    clone_cmds.append(label)
-                if c not in clone_cmds:
-                    clone_cmds.append(c)
-            for h in extract_dep_hints(txt):
-                if h not in dep_hints:
-                    dep_hints.append(h)
+            cmds = extract_git_clone_commands(txt)
+            if cmds:
+                clone_cmds_by_envfile[name] = cmds
 
         mcp_mirror_repos = extract_mcp_scope_repos(instr_mcp)
         available_repos = extract_available_resource_repos(instr_mcp)
@@ -419,8 +590,8 @@ def main() -> None:
             "output_paths": outputs,
             "mcp_mirror_repos": mcp_mirror_repos,
             "available_resource_repos": available_repos,
-            "local_clone_commands": clone_cmds,
-            "dependency_hints": dep_hints,
+            "clone_commands_by_envfile": clone_cmds_by_envfile,
+            "required_tools": detect_required_tools(docker_texts, task_sec.get("language")),
             "ir_situations": ir_buckets.get(task_name, []),
         }
 

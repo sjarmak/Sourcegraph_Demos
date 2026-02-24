@@ -10,7 +10,7 @@
 - `SOURCEGRAPH_ACCESS_TOKEN` (Sourcegraph access token for MCP server)
 - Harness auth vars (see `docs/HARNESS_MCP_SETUP.md`): e.g. `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`, etc.
 
-## Local repo checkout (baseline/direct or local reading)
+## Local repo checkout (which one to use)
 
 Optional local clones (derived from instruction resources):
 
@@ -23,6 +23,35 @@ git clone https://github.com/internetarchive/openlibrary.git openlibrary
 
 Use these Sourcegraph mirror repos for the MCP run:
 - `github.com/sg-evals/openlibrary--92db3454`
+
+## Dependencies (Linux / macOS / Windows)
+
+Install these tools before running the task locally:
+
+- Required tools: `curl`, `make`
+
+### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt-get update
+sudo apt-get install -y curl make
+```
+
+### macOS (Homebrew)
+
+```bash
+# Install Homebrew first if needed: https://brew.sh/
+brew install curl make
+```
+
+### Windows (PowerShell)
+
+Windows note: WSL2 is often the easiest option for shell-heavy verifiers, but native PowerShell + winget works for many tasks.
+
+```powershell
+winget install --id curl.curl -e
+winget install --id GnuWin32.Make -e
+```
 
 ## Run pattern (local ablation)
 

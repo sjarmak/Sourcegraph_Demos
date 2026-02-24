@@ -36,16 +36,19 @@
       "version": null
     }
   ],
-  "local_clone_commands": [
-    "# Dockerfile",
-    "git clone --depth 1 https://github.com/sg-evals/django--674eda1c.git . && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
-    "# Dockerfile.artifact_only",
-    "git clone --filter=blob:none --no-checkout https://github.com/django/django.git . && git checkout 674eda1c03a3187905f48afee0f15226aa62fdf3 && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
-  ],
-  "dependency_hints": [
-    "apt-get update && apt-get install -y --no-install-recommends git curl ripgrep && rm -rf /var/lib/apt/lists/*",
-    "pip install --no-cache-dir Django",
-    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl ripgrep && rm -rf /var/lib/apt/lists/*"
+  "clone_commands_by_envfile": {
+    "Dockerfile": [
+      "git clone --depth 1 https://github.com/sg-evals/django--674eda1c.git . && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+    ],
+    "Dockerfile.artifact_only": [
+      "git clone --filter=blob:none --no-checkout https://github.com/django/django.git . && git checkout 674eda1c03a3187905f48afee0f15226aa62fdf3 && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+    ]
+  },
+  "required_tools": [
+    "git",
+    "curl",
+    "python3",
+    "make"
   ],
   "ir_situations": []
 }

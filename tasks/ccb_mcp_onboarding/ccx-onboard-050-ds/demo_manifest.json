@@ -67,16 +67,19 @@
       "version": null
     }
   ],
-  "local_clone_commands": [
-    "# Dockerfile",
-    "git clone --depth 1 https://github.com/sg-evals/kubernetes--v1.32.0.git /workspace/kubernetes",
-    "git clone --depth 1 https://github.com/sg-evals/etcd-io-etcd.git /workspace/etcd",
-    "git clone --depth 1 https://github.com/sg-evals/client-go--v0.32.0.git /workspace/client-go",
-    "git clone --depth 1 https://github.com/sg-evals/api--v0.32.0.git /workspace/api"
-  ],
-  "dependency_hints": [
-    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl python3 golang-go && rm -rf /var/lib/apt/lists/*",
-    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  "clone_commands_by_envfile": {
+    "Dockerfile": [
+      "git clone --depth 1 https://github.com/sg-evals/kubernetes--v1.32.0.git /workspace/kubernetes",
+      "git clone --depth 1 https://github.com/sg-evals/etcd-io-etcd.git /workspace/etcd",
+      "git clone --depth 1 https://github.com/sg-evals/client-go--v0.32.0.git /workspace/client-go",
+      "git clone --depth 1 https://github.com/sg-evals/api--v0.32.0.git /workspace/api"
+    ]
+  },
+  "required_tools": [
+    "git",
+    "curl",
+    "python3",
+    "go"
   ],
   "ir_situations": []
 }

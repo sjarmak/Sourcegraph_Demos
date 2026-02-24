@@ -10,25 +10,59 @@
 - `SOURCEGRAPH_ACCESS_TOKEN` (Sourcegraph access token for MCP server)
 - Harness auth vars (see `docs/HARNESS_MCP_SETUP.md`): e.g. `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`, etc.
 
-## Local repo checkout (baseline/direct or local reading)
+## Local repo checkout (which one to use)
 
-Clone commands inferred from the original CCB task Dockerfiles (pinned when present):
+Use the following checkout commands based on the run style you want to reproduce:
+
+### Dockerfile.artifact_only
+
+Artifact-output local variant (use when you want a minimal local checkout and plan to produce an artifact like `answer.json`).
 
 ```bash
-# Dockerfile.artifact_only
 git clone --filter=blob:none --no-checkout https://github.com/rust-lang/rust.git . && git checkout 01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf && git config user.email "agent@example.com" && git config user.name "Agent"
 ```
+
+Recommended local usage:
+- Baseline run (`instruction.md`): use the available checkout variant (`Dockerfile.artifact_only` section) and keep the task output format from `instruction.md`.
+- MCP run (`instruction_mcp.md`): usually reuse the same local checkout and enable Sourcegraph MCP.
+- `Dockerfile.artifact_only` / `Dockerfile.sg_only` variants are optional and mostly useful if you want to mimic those benchmark modes.
 
 ## Sourcegraph MCP repo scope
 
 Use these Sourcegraph mirror repos for the MCP run:
 - `github.com/sg-evals/rust--01f6ddf7`
 
-## Dependency hints (from task Dockerfiles)
+## Dependencies (Linux / macOS / Windows)
 
-These are not mandatory if your harness already provides them, but they reflect the CCB task environment:
-- `apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip && rm -rf /var/lib/apt/lists/*`
-- `apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*`
+Install these tools before running the task locally:
+
+- Required tools: `git`, `curl`, `python3`, `rust`, `cargo`
+
+### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt-get update
+sudo apt-get install -y git curl python3 python3-pip rustc cargo
+```
+
+### macOS (Homebrew)
+
+```bash
+# Install Homebrew first if needed: https://brew.sh/
+brew install git curl python rustup-init
+# `rustup-init` installs both rustc and cargo.
+```
+
+### Windows (PowerShell)
+
+Windows note: WSL2 is often the easiest option for shell-heavy verifiers, but native PowerShell + winget works for many tasks.
+
+```powershell
+winget install --id Git.Git -e
+winget install --id curl.curl -e
+winget install --id Python.Python.3.11 -e
+winget install --id Rustlang.Rustup -e
+```
 
 ## Run pattern (local ablation)
 

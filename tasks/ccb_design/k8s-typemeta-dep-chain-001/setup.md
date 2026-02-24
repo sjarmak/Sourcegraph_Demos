@@ -10,20 +10,34 @@
 - `SOURCEGRAPH_ACCESS_TOKEN` (Sourcegraph access token for MCP server)
 - Harness auth vars (see `docs/HARNESS_MCP_SETUP.md`): e.g. `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`, etc.
 
-## Local repo checkout (baseline/direct or local reading)
+## Local repo checkout (which one to use)
 
-Clone commands inferred from the original CCB task Dockerfiles (pinned when present):
+Use the following checkout commands based on the run style you want to reproduce:
+
+### Dockerfile
+
+Primary local checkout/environment (recommended starting point for local runs).
 
 ```bash
-# Dockerfile
 git clone --depth 1 https://github.com/sg-evals/kubernetes--31bf3ed4.git kubernetes
 git clone --depth 1 https://github.com/sg-evals/api--f32ed1d6.git api
 git clone --depth 1 https://github.com/sg-evals/apimachinery--b2e9f88f.git apimachinery
-# Dockerfile.artifact_only
+```
+
+### Dockerfile.artifact_only
+
+Artifact-output local variant (use when you want a minimal local checkout and plan to produce an artifact like `answer.json`).
+
+```bash
 git clone https://github.com/kubernetes/kubernetes.git kubernetes && cd kubernetes && git checkout 31bf3ed48b91b67e5003d8df1b3bd0b918d1fb94
 git clone https://github.com/kubernetes/api.git api && cd api && git checkout f32ed1d60cf0787a512bebd6c06a4b84ae0b7cc7
 git clone https://github.com/kubernetes/apimachinery.git apimachinery && cd apimachinery && git checkout b2e9f88ff6d4c50c13061a53b1239c7707354eda
 ```
+
+Recommended local usage:
+- Baseline run (`instruction.md`): use the **primary local checkout** (`Dockerfile` section).
+- MCP run (`instruction_mcp.md`): usually reuse the same local checkout and enable Sourcegraph MCP.
+- `Dockerfile.artifact_only` / `Dockerfile.sg_only` variants are optional and mostly useful if you want to mimic those benchmark modes.
 
 ## Sourcegraph MCP repo scope
 
@@ -32,11 +46,36 @@ Use these Sourcegraph mirror repos for the MCP run:
 - `github.com/sg-evals/api--f32ed1d6`
 - `github.com/sg-evals/apimachinery--b2e9f88f`
 
-## Dependency hints (from task Dockerfiles)
+## Dependencies (Linux / macOS / Windows)
 
-These are not mandatory if your harness already provides them, but they reflect the CCB task environment:
-- `apk add --no-cache git bash python3`
-- `apk add --no-cache git python3 curl bash`
+Install these tools before running the task locally:
+
+- Required tools: `git`, `curl`, `python3`, `go`
+
+### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt-get update
+sudo apt-get install -y git curl python3 python3-pip golang-go
+```
+
+### macOS (Homebrew)
+
+```bash
+# Install Homebrew first if needed: https://brew.sh/
+brew install git curl python go
+```
+
+### Windows (PowerShell)
+
+Windows note: WSL2 is often the easiest option for shell-heavy verifiers, but native PowerShell + winget works for many tasks.
+
+```powershell
+winget install --id Git.Git -e
+winget install --id curl.curl -e
+winget install --id Python.Python.3.11 -e
+winget install --id GoLang.Go -e
+```
 
 ## Run pattern (local ablation)
 

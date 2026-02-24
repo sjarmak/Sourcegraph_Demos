@@ -10,30 +10,68 @@
 - `SOURCEGRAPH_ACCESS_TOKEN` (Sourcegraph access token for MCP server)
 - Harness auth vars (see `docs/HARNESS_MCP_SETUP.md`): e.g. `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`, etc.
 
-## Local repo checkout (baseline/direct or local reading)
+## Local repo checkout (which one to use)
 
-Clone commands inferred from the original CCB task Dockerfiles (pinned when present):
+Use the following checkout commands based on the run style you want to reproduce:
+
+### Dockerfile
+
+Primary local checkout/environment (recommended starting point for local runs).
 
 ```bash
-# Dockerfile
 git clone --depth 1 https://github.com/sg-evals/aspnetcore--87525573.git /workspace && cd /workspace && git config user.email "agent@example.com" && git config user.name "Agent"
-# Dockerfile.artifact_only
+```
+
+### Dockerfile.artifact_only
+
+Artifact-output local variant (use when you want a minimal local checkout and plan to produce an artifact like `answer.json`).
+
+```bash
 git clone --filter=blob:none --no-checkout https://github.com/dotnet/aspnetcore.git /workspace && cd /workspace && git checkout 875255737993775850f1f3650c10ddb43ef00ced && git config user.email "agent@example.com" && git config user.name "Agent"
 ```
+
+Recommended local usage:
+- Baseline run (`instruction.md`): use the **primary local checkout** (`Dockerfile` section).
+- MCP run (`instruction_mcp.md`): usually reuse the same local checkout and enable Sourcegraph MCP.
+- `Dockerfile.artifact_only` / `Dockerfile.sg_only` variants are optional and mostly useful if you want to mimic those benchmark modes.
 
 ## Sourcegraph MCP repo scope
 
 Use these Sourcegraph mirror repos for the MCP run:
 - `github.com/sg-evals/aspnetcore--87525573`
 
-## Dependency hints (from task Dockerfiles)
+## Dependencies (Linux / macOS / Windows)
 
-These are not mandatory if your harness already provides them, but they reflect the CCB task environment:
-- `apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl python3 ripgrep && rm -rf /var/lib/apt/lists/*`
-- `if ! command -v node &> /dev/null; then curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y --no-install-recommends nodejs; fi`
-- `apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl patch python3 ripgrep && rm -rf /var/lib/apt/lists/*`
-- `apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl ripgrep && rm -rf /var/lib/apt/lists/*`
-- `if ! command -v node > /dev/null 2>&1; then curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y --no-install-recommends nodejs; fi`
+Install these tools before running the task locally:
+
+- Required tools: `git`, `curl`, `python3`, `nodejs`, `npm`, `dotnet`
+
+### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt-get update
+sudo apt-get install -y git curl python3 python3-pip nodejs npm dotnet-sdk-8.0
+# If dotnet-sdk is unavailable, install the .NET SDK from Microsoft package repos.
+```
+
+### macOS (Homebrew)
+
+```bash
+# Install Homebrew first if needed: https://brew.sh/
+brew install git curl python node dotnet-sdk
+```
+
+### Windows (PowerShell)
+
+Windows note: WSL2 is often the easiest option for shell-heavy verifiers, but native PowerShell + winget works for many tasks.
+
+```powershell
+winget install --id Git.Git -e
+winget install --id curl.curl -e
+winget install --id Python.Python.3.11 -e
+winget install --id OpenJS.NodeJS.LTS -e
+winget install --id Microsoft.DotNet.SDK.8 -e
+```
 
 ## Run pattern (local ablation)
 

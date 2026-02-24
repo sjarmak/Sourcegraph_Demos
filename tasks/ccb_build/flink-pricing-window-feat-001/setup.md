@@ -10,7 +10,7 @@
 - `SOURCEGRAPH_ACCESS_TOKEN` (Sourcegraph access token for MCP server)
 - Harness auth vars (see `docs/HARNESS_MCP_SETUP.md`): e.g. `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`, etc.
 
-## Local repo checkout (baseline/direct or local reading)
+## Local repo checkout (which one to use)
 
 Optional local clones (derived from instruction resources):
 
@@ -24,10 +24,38 @@ git clone https://github.com/apache/flink.git flink
 Use these Sourcegraph mirror repos for the MCP run:
 - `github.com/sg-evals/flink--0cc95fcc`
 
-## Dependency hints (from task Dockerfiles)
+## Dependencies (Linux / macOS / Windows)
 
-These are not mandatory if your harness already provides them, but they reflect the CCB task environment:
-- `apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip ca-certificates && rm -rf /var/lib/apt/lists/*`
+Install these tools before running the task locally:
+
+- Required tools: `git`, `curl`, `python3`, `java`
+
+### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt-get update
+sudo apt-get install -y git curl python3 python3-pip openjdk-17-jdk
+```
+
+### macOS (Homebrew)
+
+```bash
+# Install Homebrew first if needed: https://brew.sh/
+brew install git curl python openjdk@17
+# Set JAVA_HOME if your task/verifier needs it.
+```
+
+### Windows (PowerShell)
+
+Windows note: WSL2 is often the easiest option for shell-heavy verifiers, but native PowerShell + winget works for many tasks.
+
+```powershell
+winget install --id Git.Git -e
+winget install --id curl.curl -e
+winget install --id Python.Python.3.11 -e
+winget install --id EclipseAdoptium.Temurin.17.JDK -e
+# Set JAVA_HOME after JDK installation if required.
+```
 
 ## Run pattern (local ablation)
 

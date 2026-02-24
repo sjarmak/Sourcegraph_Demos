@@ -59,16 +59,20 @@
       "version": "4.21.1"
     }
   ],
-  "local_clone_commands": [
-    "# Dockerfile",
-    "git clone --depth 1 https://github.com/sg-evals/node--v22.13.0.git /workspace/node",
-    "git clone --depth 1 https://github.com/sg-evals/express--4.21.1.git /workspace/express",
-    "git clone --depth 1 https://github.com/sg-evals/lodash /workspace/lodash",
-    "git clone --depth 1 https://github.com/sg-evals/prisma-prisma /workspace/prisma"
-  ],
-  "dependency_hints": [
-    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl python3 && rm -rf /var/lib/apt/lists/*",
-    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  "clone_commands_by_envfile": {
+    "Dockerfile": [
+      "git clone --depth 1 https://github.com/sg-evals/node--v22.13.0.git /workspace/node",
+      "git clone --depth 1 https://github.com/sg-evals/express--4.21.1.git /workspace/express",
+      "git clone --depth 1 https://github.com/sg-evals/lodash /workspace/lodash",
+      "git clone --depth 1 https://github.com/sg-evals/prisma-prisma /workspace/prisma"
+    ]
+  },
+  "required_tools": [
+    "git",
+    "curl",
+    "python3",
+    "nodejs",
+    "npm"
   ],
   "ir_situations": []
 }

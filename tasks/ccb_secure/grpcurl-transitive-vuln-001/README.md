@@ -14,4 +14,4 @@ Curated demo task package from CodeContextBench.
 - `evaluation.md`: scoring/comparison workflow
 - `demo_manifest.json`: machine-readable metadata for scripts and indexing
 - `eval/`: copied task verifier/oracle assets from CCB
-- `environment/`: original task Dockerfiles (for provenance and dependency hints)
+- `environment/`: original task Dockerfiles (for provenance)

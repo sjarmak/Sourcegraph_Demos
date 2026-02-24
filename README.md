@@ -56,7 +56,7 @@ Each task directory contains:
 
 - `instruction.md`: baseline/local-access task prompt
 - `instruction_mcp.md`: Sourcegraph MCP task prompt variant
-- `setup.md`: pinned clone commands (where available), repo scope, env vars, dependency hints
+- `setup.md`: checkout guidance, repo scope, env vars, and Linux/macOS/Windows dependency install steps
 - `talk_track.md`: demo narration suggestions (why this task is a good MCP demo)
 - `evaluation.md`: comparison workflow for this task
 - `demo_manifest.json`: structured metadata (delta, suite, mode, repos, outputs)
