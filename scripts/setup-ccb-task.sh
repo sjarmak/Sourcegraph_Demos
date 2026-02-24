@@ -207,12 +207,6 @@ setup_all_tasks() {
     for task_dir in "${tasks[@]}"; do
         local task_name=$(basename "$task_dir")
         
-        # Check if workspace already exists
-        if [ -d "${task_name}-setup" ]; then
-            print_warning "Skipping $task_name (already exists)"
-            continue
-        fi
-        
         setup_workspace "$task_dir" "silent"
         local result=$?
         if [ $result -eq 0 ]; then
@@ -382,10 +376,18 @@ setup_workspace() {
                 echo "Cancelled"
                 exit 1
             fi
+            rm -rf "$workspace_dir"
         else
-            return 1
+            # In silent mode, check if source needs to be cloned
+            # This allows --setup-all to complete partial setups
+            if [ ! -d "$workspace_dir/source/.git" ]; then
+                # Source is missing, proceed with cloning
+                if clone_source_code "$task_dir" "$workspace_dir"; then
+                    echo "Cloned source for $task_name"
+                fi
+            fi
+            return 0
         fi
-        rm -rf "$workspace_dir"
     fi
     
     # Create directory structure
