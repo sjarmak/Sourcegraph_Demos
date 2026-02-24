@@ -6,7 +6,7 @@ Selection filter used for this snapshot: `reference verifier delta > 0.2` (using
 
 Goal: make it easy to run your own **baseline vs Sourcegraph MCP ablation tests** from your machine (no Docker required, use any harness/agent you prefer).
 
-## 🚀 Quick Setup
+## Quick Setup
 
 ### Option A: Single Task (2 minutes)
 
@@ -39,10 +39,10 @@ cat RUN_GUIDE.md
 ```
 
 Each workspace includes:
-- ✅ Pre-cloned source code for baseline
-- ✅ Task instructions (baseline + MCP)
-- ✅ Scoring scripts & ground truth
-- ✅ Comprehensive execution guide
+- Pre-cloned source code for baseline
+- Task instructions (baseline + MCP)
+- Scoring scripts & ground truth
+- Comprehensive execution guide
 
 **See `SETUP_SCRIPT_GUIDE.md` for full documentation** (list tasks, advanced options).
 
