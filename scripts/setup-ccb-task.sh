@@ -368,7 +368,9 @@ setup_workspace() {
     fi
     
     # Check if workspace already exists
+    local workspace_exists=false
     if [ -d "$workspace_dir" ]; then
+        workspace_exists=true
         if [ "$silent" != "silent" ]; then
             print_warning "Workspace already exists at $workspace_dir"
             read -p "Overwrite? (y/n) " -r
@@ -377,21 +379,14 @@ setup_workspace() {
                 exit 1
             fi
             rm -rf "$workspace_dir"
-        else
-            # In silent mode, check if source needs to be cloned
-            # This allows --setup-all to complete partial setups
-            if [ ! -d "$workspace_dir/source/.git" ]; then
-                # Source is missing, proceed with cloning
-                if clone_source_code "$task_dir" "$workspace_dir"; then
-                    echo "Cloned source for $task_name"
-                fi
-            fi
-            return 0
+            workspace_exists=false
         fi
     fi
     
-    # Create directory structure
-    mkdir -p "$workspace_dir"
+    # Create directory structure (unless already exists)
+    if [ "$workspace_exists" = false ]; then
+        mkdir -p "$workspace_dir"
+    fi
     
     # Save original directory
     local orig_dir=$(pwd)
