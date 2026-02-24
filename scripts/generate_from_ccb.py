@@ -22,6 +22,7 @@ DEFAULT_CCB = Path("/home/stephanie_jarmak/CodeContextBench")
 AUDIT_JSON = DEFAULT_CCB / "runs/staging/MCP_POSITIVE_DELTAS_VALID_TASKS_STAGING_CURRENT_20260224.json"
 AUDIT_MD = DEFAULT_CCB / "runs/staging/MCP_POSITIVE_DELTAS_VALID_TASKS_STAGING_CURRENT_20260224.md"
 IR_JSON = DEFAULT_CCB / "runs/staging/MCP_POSITIVE_DELTAS_VALID_TASKS_STAGING_CURRENT_20260224_ir_enrichment.json"
+DEFAULT_MIN_DELTA = 0.2
 
 
 def read_text(p: Path) -> str:
@@ -332,7 +333,12 @@ def main() -> None:
         if src.exists():
             shutil.copy2(src, ROOT / "data" / src.name)
 
-    positive = list(audit.get("positive_deltas", []))
+    positive = []
+    for row in audit.get("positive_deltas", []):
+        # Use the visible rounded delta for filtering so values printed as +0.200 are excluded
+        # when the threshold is > 0.2, even if their raw float is 0.20000000000000007.
+        if round(float(row.get("delta", 0.0)), 4) > DEFAULT_MIN_DELTA:
+            positive.append(row)
     positive.sort(key=lambda x: float(x.get("delta", 0)), reverse=True)
 
     task_index: list[dict[str, Any]] = []
@@ -462,7 +468,14 @@ def main() -> None:
         for r in task_index:
             w.writerow({k: r.get(k) for k in w.fieldnames})
 
-    lines = ["# Task Index", "", f"Generated from `{AUDIT_JSON.name}`. Positive-delta tasks: **{len(task_index)}**.", ""]
+    lines = [
+        "# Task Index",
+        "",
+        f"Generated from `{AUDIT_JSON.name}`.",
+        f"Filter: `reward_delta > {DEFAULT_MIN_DELTA}` (using rounded audit delta).",
+        f"Included tasks: **{len(task_index)}**.",
+        "",
+    ]
     lines += ["| Rank | Task | Suite | Delta | Mode | Path |", "|---:|---|---|---:|---|---|"]
     for r in task_index:
         lines.append(f"| {r['rank']} | `{r['task_id']}` | `{r['suite']}` | {r['delta']:+.3f} | `{r['comparison_mode']}` | `{r['path']}` |")

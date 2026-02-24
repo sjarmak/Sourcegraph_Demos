@@ -1,6 +1,8 @@
 # Task Index
 
-Generated from `MCP_POSITIVE_DELTAS_VALID_TASKS_STAGING_CURRENT_20260224.json`. Positive-delta tasks: **62**.
+Generated from `MCP_POSITIVE_DELTAS_VALID_TASKS_STAGING_CURRENT_20260224.json`.
+Filter: `reward_delta > 0.2` (using rounded audit delta).
+Included tasks: **37**.
 
 | Rank | Task | Suite | Delta | Mode | Path |
 |---:|---|---|---:|---|---|
@@ -41,28 +43,3 @@ Generated from `MCP_POSITIVE_DELTAS_VALID_TASKS_STAGING_CURRENT_20260224.json`. 
 | 35 | `flipt-flagexists-refactor-001` | `ccb_build` | +0.300 | `direct` | `tasks/ccb_build/flipt-flagexists-refactor-001` |
 | 36 | `CCX-vuln-remed-011` | `ccb_mcp_security` | +0.250 | `artifact` | `tasks/ccb_mcp_security/ccx-vuln-remed-011` |
 | 37 | `CCX-onboard-050-ds` | `ccb_mcp_onboarding` | +0.250 | `artifact` | `tasks/ccb_mcp_onboarding/ccx-onboard-050-ds` |
-| 38 | `k8s-score-normalizer-refac-001` | `ccb_build` | +0.200 | `direct` | `tasks/ccb_build/k8s-score-normalizer-refac-001` |
-| 39 | `django-cross-team-boundary-001` | `ccb_secure` | +0.200 | `direct` | `tasks/ccb_secure/django-cross-team-boundary-001` |
-| 40 | `django-repo-scoped-access-001` | `ccb_secure` | +0.200 | `direct` | `tasks/ccb_secure/django-repo-scoped-access-001` |
-| 41 | `prometheus-queue-reshard-debug-001` | `ccb_debug` | +0.180 | `direct` | `tasks/ccb_debug/prometheus-queue-reshard-debug-001` |
-| 42 | `terraform-arch-doc-gen-001` | `ccb_document` | +0.170 | `direct` | `tasks/ccb_document/terraform-arch-doc-gen-001` |
-| 43 | `CCX-explore-042-ds` | `ccb_mcp_onboarding` | +0.167 | `artifact` | `tasks/ccb_mcp_onboarding/ccx-explore-042-ds` |
-| 44 | `kafka-message-lifecycle-qa-001` | `ccb_understand` | +0.140 | `direct` | `tasks/ccb_understand/kafka-message-lifecycle-qa-001` |
-| 45 | `envoy-migration-doc-gen-001` | `ccb_document` | +0.140 | `direct` | `tasks/ccb_document/envoy-migration-doc-gen-001` |
-| 46 | `django-select-for-update-fix-001` | `ccb_fix` | +0.110 | `direct` | `tasks/ccb_fix/django-select-for-update-fix-001` |
-| 47 | `django-rate-limit-design-001` | `ccb_design` | +0.100 | `direct` | `tasks/ccb_design/django-rate-limit-design-001` |
-| 48 | `envoy-cve-triage-001` | `ccb_secure` | +0.100 | `direct` | `tasks/ccb_secure/envoy-cve-triage-001` |
-| 49 | `django-orm-query-arch-001` | `ccb_design` | +0.080 | `direct` | `tasks/ccb_design/django-orm-query-arch-001` |
-| 50 | `k8s-dra-scheduler-event-fix-001` | `ccb_fix` | +0.070 | `direct` | `tasks/ccb_fix/k8s-dra-scheduler-event-fix-001` |
-| 51 | `test-coverage-gap-002` | `ccb_test` | +0.060 | `direct` | `tasks/ccb_test/test-coverage-gap-002` |
-| 52 | `kafka-vuln-reachability-001` | `ccb_secure` | +0.060 | `direct` | `tasks/ccb_secure/kafka-vuln-reachability-001` |
-| 53 | `ansible-abc-imports-fix-001` | `ccb_fix` | +0.057 | `direct` | `tasks/ccb_fix/ansible-abc-imports-fix-001` |
-| 54 | `cilium-ebpf-fault-qa-001` | `ccb_understand` | +0.050 | `direct` | `tasks/ccb_understand/cilium-ebpf-fault-qa-001` |
-| 55 | `python-http-class-naming-refac-001` | `ccb_build` | +0.040 | `direct` | `tasks/ccb_build/python-http-class-naming-refac-001` |
-| 56 | `envoy-grpc-server-impl-001` | `ccb_build` | +0.040 | `direct` | `tasks/ccb_build/envoy-grpc-server-impl-001` |
-| 57 | `postgres-client-auth-audit-001` | `ccb_secure` | +0.030 | `direct` | `tasks/ccb_secure/postgres-client-auth-audit-001` |
-| 58 | `vscode-api-doc-gen-001` | `ccb_document` | +0.020 | `direct` | `tasks/ccb_document/vscode-api-doc-gen-001` |
-| 59 | `cilium-api-doc-gen-001` | `ccb_document` | +0.020 | `direct` | `tasks/ccb_document/cilium-api-doc-gen-001` |
-| 60 | `k8s-runtime-object-impl-001` | `ccb_build` | +0.010 | `direct` | `tasks/ccb_build/k8s-runtime-object-impl-001` |
-| 61 | `flipt-ecr-auth-oci-fix-001` | `ccb_fix` | +0.008 | `direct` | `tasks/ccb_fix/flipt-ecr-auth-oci-fix-001` |
-| 62 | `flipt-otlp-exporter-fix-001` | `ccb_fix` | +0.001 | `direct` | `tasks/ccb_fix/flipt-otlp-exporter-fix-001` |
