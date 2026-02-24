@@ -44,7 +44,11 @@
       "version": null
     }
   ],
-  "clone_commands_by_envfile": {},
+  "clone_commands_by_envfile": {
+    "Dockerfile": [
+      "git clone --depth 1 https://github.com/sg-evals/envoy--1d0ba73a.git . && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+    ]
+  },
   "required_tools": [
     "git",
     "curl",

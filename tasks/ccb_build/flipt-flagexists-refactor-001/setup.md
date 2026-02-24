@@ -16,8 +16,7 @@ Optional local clones (derived from instruction resources):
 
 ```bash
 mkdir -p repos && cd repos
-git clone https://github.com/go build ./internal/....git ...
-git clone https://github.com/flipt-io/flipt.git flipt
+git clone https://github.com/sg-evals/flipt--3d5a345f.git flipt
 ```
 
 ## Sourcegraph MCP repo scope
@@ -62,4 +61,3 @@ winget install --id GoLang.Go -e
 3. Save agent outputs and raw traces separately (e.g., `runs/<task>/baseline/` and `runs/<task>/mcp/`).
 4. Normalize traces with `scripts/extract_trace.py` and compare with `scripts/compare_trace_metrics.py`.
 5. Score outputs using the included `eval/` assets (task-specific) or your harness verifier.
-

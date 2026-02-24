@@ -16,9 +16,7 @@ Optional local clones (derived from instruction resources):
 
 ```bash
 mkdir -p repos && cd repos
-git clone https://github.com/source/common/http/filter_manager.cc.git filter_manager.cc
-git clone https://github.com/source/common/http/header_map_impl.cc.git header_map_impl.cc
-git clone https://github.com/envoyproxy/envoy.git envoy
+git clone https://github.com/sg-evals/envoy--1d0ba73a.git envoy
 ```
 
 ## Sourcegraph MCP repo scope
@@ -63,4 +61,3 @@ winget install --id Python.Python.3.11 -e
 3. Save agent outputs and raw traces separately (e.g., `runs/<task>/baseline/` and `runs/<task>/mcp/`).
 4. Normalize traces with `scripts/extract_trace.py` and compare with `scripts/compare_trace_metrics.py`.
 5. Score outputs using the included `eval/` assets (task-specific) or your harness verifier.
-
