@@ -1,0 +1,44 @@
+{
+  "rank": 11,
+  "task_id": "camel-routing-arch-001",
+  "task_dir_name": "camel-routing-arch-001",
+  "suite": "ccb_design",
+  "source_ccb_path": "benchmarks/ccb_design/camel-routing-arch-001",
+  "delta": 0.73,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.73,
+  "run": "design_haiku_20260223_124652",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "architectural_understanding",
+  "language": "java",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "apache/camel",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Trace how Apache Camel routes a message from endpoint reception through the EIP pipeline to a destination",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "ir_checklist",
+  "output_paths": [
+    "/logs/agent/solution.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/camel--1006f047"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "apache/camel",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

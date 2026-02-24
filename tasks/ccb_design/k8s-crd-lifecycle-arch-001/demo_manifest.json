@@ -1,0 +1,44 @@
+{
+  "rank": 10,
+  "task_id": "k8s-crd-lifecycle-arch-001",
+  "task_dir_name": "k8s-crd-lifecycle-arch-001",
+  "suite": "ccb_design",
+  "source_ccb_path": "benchmarks/ccb_design/k8s-crd-lifecycle-arch-001",
+  "delta": 0.77,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.77,
+  "run": "design_haiku_20260223_124652",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "architectural_understanding",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 1500,
+  "repo": "kubernetes/kubernetes",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Trace the CRD lifecycle across the Kubernetes ecosystem: registration, client generation, API types, and API machinery",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "ir_checklist",
+  "output_paths": [
+    "/logs/agent/solution.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/kubernetes--v1.30.0"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "kubernetes/kubernetes",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

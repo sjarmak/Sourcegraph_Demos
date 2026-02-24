@@ -1,0 +1,66 @@
+{
+  "rank": 33,
+  "task_id": "docgen-changelog-002",
+  "task_dir_name": "docgen-changelog-002",
+  "suite": "ccb_document",
+  "source_ccb_path": "benchmarks/ccb_document/docgen-changelog-002",
+  "delta": 0.3,
+  "baseline_reward": 0.7,
+  "mcp_reward": 1.0,
+  "run": "document_haiku_20260223_164240",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "changelog_generation",
+  "language": "go",
+  "difficulty": "medium",
+  "time_limit_sec": 1200,
+  "repo": "flipt-io/flipt",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Generate release notes for Flipt summarizing API changes, breaking changes, and new features",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/workspace/RELEASE_NOTES.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/flipt--3d5a345f"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "rpc/flipt/",
+      "version": null
+    },
+    {
+      "repo": "internal/server/",
+      "version": null
+    },
+    {
+      "repo": "internal/storage/",
+      "version": null
+    },
+    {
+      "repo": "ui/",
+      "version": null
+    },
+    {
+      "repo": "flipt-io/flipt",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/flipt--3d5a345f.git . && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/flipt-io/flipt.git . && git checkout 3d5a345f94c2adc8a0eaa102c189c08ad4c0f8e8 && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 ripgrep && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

@@ -1,0 +1,47 @@
+{
+  "rank": 50,
+  "task_id": "k8s-dra-scheduler-event-fix-001",
+  "task_dir_name": "k8s-dra-scheduler-event-fix-001",
+  "suite": "ccb_fix",
+  "source_ccb_path": "benchmarks/ccb_fix/k8s-dra-scheduler-event-fix-001",
+  "delta": 0.07,
+  "baseline_reward": 0.68,
+  "mcp_reward": 0.75,
+  "run": "fix_haiku_20260223_171232",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "bug_investigation",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "kubernetes/kubernetes",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Trace the root cause of pods permanently stuck Unschedulable when DRA driver ResourceSlice events are not handled by the Kubernetes scheduler",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "ir_checklist",
+  "output_paths": [
+    "/logs/agent/solution.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/kubernetes--v1.30.0"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "kubernetes/kubernetes",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Speed-to-context win",
+    "Broader search win"
+  ]
+}

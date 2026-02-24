@@ -1,0 +1,9 @@
+# Local experiment outputs
+out/
+runs/
+*.trace.json
+*.comparison.json
+
+# Python cache
+__pycache__/
+*.pyc

@@ -1,0 +1,50 @@
+{
+  "rank": 35,
+  "task_id": "flipt-flagexists-refactor-001",
+  "task_dir_name": "flipt-flagexists-refactor-001",
+  "suite": "ccb_build",
+  "source_ccb_path": "benchmarks/ccb_build/flipt-flagexists-refactor-001",
+  "delta": 0.3,
+  "baseline_reward": 0.45,
+  "mcp_reward": 0.75,
+  "run": "build_haiku_20260223_124805",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "enterprise_dep_refactor",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 900,
+  "repo": "flipt-io/flipt",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Add FlagExists method to ReadOnlyFlagStore interface and implement in all 3 concrete types \u2014 interface method addition refactoring",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/flipt--3d5a345f"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "go build ./internal/...",
+      "version": null
+    },
+    {
+      "repo": "flipt-io/flipt",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Speed-to-context win",
+    "Higher-quality context win",
+    "Execution/quality win after similar retrieval"
+  ]
+}

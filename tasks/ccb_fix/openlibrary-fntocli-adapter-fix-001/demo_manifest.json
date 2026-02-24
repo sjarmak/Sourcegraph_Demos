@@ -1,0 +1,42 @@
+{
+  "rank": 32,
+  "task_id": "openlibrary-fntocli-adapter-fix-001",
+  "task_dir_name": "openlibrary-fntocli-adapter-fix-001",
+  "suite": "ccb_fix",
+  "source_ccb_path": "benchmarks/ccb_fix/openlibrary-fntocli-adapter-fix-001",
+  "delta": 0.3333,
+  "baseline_reward": 0.6667,
+  "mcp_reward": 1.0,
+  "run": "fix_haiku_20260223_171232",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "ccb_swebenchpro",
+  "language": null,
+  "difficulty": null,
+  "time_limit_sec": null,
+  "repo": "internetarchive/openlibrary",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": null,
+  "verification": {
+    "type": null,
+    "command": null
+  },
+  "reward_type": "test_ratio",
+  "output_paths": [],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/openlibrary--c506c1b0"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "internetarchive/openlibrary",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [],
+  "ir_situations": [
+    "Higher-quality context win"
+  ]
+}

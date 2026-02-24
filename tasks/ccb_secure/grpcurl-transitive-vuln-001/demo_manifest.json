@@ -1,0 +1,64 @@
+{
+  "rank": 16,
+  "task_id": "grpcurl-transitive-vuln-001",
+  "task_dir_name": "grpcurl-transitive-vuln-001",
+  "suite": "ccb_secure",
+  "source_ccb_path": "benchmarks/ccb_secure/grpcurl-transitive-vuln-001",
+  "delta": 0.67,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.67,
+  "run": "secure_haiku_20260223_232545",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "transitive_dependency",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "fullstorydev/grpcurl",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Transitive dependency vulnerability analysis: grpcurl with CVE-2023-39325 (NOT affected)",
+  "verification": {
+    "type": "custom",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "continuous",
+  "output_paths": [
+    "/logs/agent/triage.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/grpcurl--25c896aa",
+    "github.com/sg-evals/grpc-go--v1.56.2"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "github.com/sg-evals/grpcurl--25c896aa",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/grpc-go--v1.56.2",
+      "version": null
+    },
+    {
+      "repo": "fullstorydev/grpcurl",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/grpcurl--25c896aa.git grpcurl",
+    "git clone --depth 1 https://github.com/sg-evals/grpc-go--v1.56.2.git grpc-go",
+    "git clone https://go.googlesource.com/net && cd net && git checkout v0.14.0 && git describe --tags | grep -q \"v0.14.0\"",
+    "# Dockerfile.artifact_only",
+    "git clone https://github.com/fullstorydev/grpcurl.git grpcurl && cd grpcurl && git checkout 25c896aa59ffc36f7d12cf5d6c18e9c8f4421bfa && git log -1 --format=\"%H %s\" | head -1 | grep -q \"25c896a\"",
+    "git clone https://github.com/grpc/grpc-go.git grpc-go && cd grpc-go && git checkout v1.56.2 && git log -1 --format=\"%H %s\" | head -1 | grep -q \"v1.56.2\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends jq bc git && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Execution/quality win after similar retrieval"
+  ]
+}

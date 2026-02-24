@@ -1,0 +1,55 @@
+{
+  "rank": 3,
+  "task_id": "numpy-dtype-localize-001",
+  "task_dir_name": "numpy-dtype-localize-001",
+  "suite": "ccb_understand",
+  "source_ccb_path": "benchmarks/ccb_understand/numpy-dtype-localize-001",
+  "delta": 0.9333,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.9333,
+  "run": "understand_haiku_20260224_001815",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": null,
+  "language": null,
+  "difficulty": null,
+  "time_limit_sec": null,
+  "repo": null,
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": null,
+  "verification": {
+    "type": null,
+    "command": null
+  },
+  "reward_type": "semantic_similarity",
+  "output_paths": [],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/numpy--a639fbf5",
+    "github.com/sg-evals/scikit-learn--cb7e82dd",
+    "github.com/sg-evals/pandas--41968da5"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "github.com/sg-evals/numpy--a639fbf5",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/scikit-learn--cb7e82dd",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/pandas--41968da5",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl ca-certificates && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Execution/quality win after similar retrieval"
+  ]
+}

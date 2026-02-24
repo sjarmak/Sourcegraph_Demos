@@ -1,0 +1,52 @@
+{
+  "rank": 1,
+  "task_id": "cilium-project-orient-001",
+  "task_dir_name": "cilium-project-orient-001",
+  "suite": "ccb_understand",
+  "source_ccb_path": "benchmarks/ccb_understand/cilium-project-orient-001",
+  "delta": 0.96,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.96,
+  "run": "understand_haiku_20260224_001815",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "codebase_orientation",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "cilium/cilium",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Cilium codebase orientation \u2014 explore project structure, core packages, and extension patterns",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/logs/agent/onboarding.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/cilium--v1.16.5"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "cilium/cilium",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/cilium--v1.16.5.git . && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/cilium/cilium.git . && git checkout v1.16.5 && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Broader search win"
+  ]
+}

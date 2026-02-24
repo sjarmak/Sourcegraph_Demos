@@ -1,0 +1,44 @@
+{
+  "rank": 28,
+  "task_id": "flink-pricing-window-feat-001",
+  "task_dir_name": "flink-pricing-window-feat-001",
+  "suite": "ccb_build",
+  "source_ccb_path": "benchmarks/ccb_build/flink-pricing-window-feat-001",
+  "delta": 0.39,
+  "baseline_reward": 0.12,
+  "mcp_reward": 0.51,
+  "run": "build_haiku_20260223_124805",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "feature_implementation",
+  "language": "java",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "apache/flink",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Implement a PricingSessionWindow assigner for financial trading session boundaries in Apache Flink",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "ir_checklist",
+  "output_paths": [
+    "/logs/agent/solution.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/flink--0cc95fcc"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "apache/flink",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

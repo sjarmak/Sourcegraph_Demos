@@ -1,0 +1,67 @@
+{
+  "rank": 27,
+  "task_id": "CCX-vuln-remed-014",
+  "task_dir_name": "ccx-vuln-remed-014",
+  "suite": "ccb_mcp_security",
+  "source_ccb_path": "benchmarks/ccb_mcp_security/ccx-vuln-remed-014",
+  "delta": 0.3929,
+  "baseline_reward": 0.25,
+  "mcp_reward": 0.6429,
+  "run": "ccb_mcp_security_haiku_20260221_140913",
+  "baseline_config": "baseline-local-artifact",
+  "mcp_config": "mcp-remote-artifact",
+  "comparison_mode": "artifact",
+  "category": "vuln-remediation",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 900,
+  "repo": "grafana/grafana",
+  "mcp_unique": true,
+  "deepsearch_relevant": false,
+  "description": "Security audit: find HTTP handler files missing authentication middleware",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/eval.sh"
+  },
+  "reward_type": "score",
+  "output_paths": [
+    "/workspace/answer.json"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/grafana",
+    "github.com/sg-evals/grafana-loki",
+    "github.com/sg-evals/grafana-mimir"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "github.com/sg-evals/grafana",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/grafana-loki",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/grafana-mimir",
+      "version": null
+    },
+    {
+      "repo": "grafana/grafana",
+      "version": "v11.4.0"
+    },
+    {
+      "repo": "grafana/loki",
+      "version": "v3.3.4"
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/grafana--v11.4.0.git /workspace/grafana",
+    "git clone --depth 1 https://github.com/sg-evals/loki--v3.3.4.git /workspace/loki"
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl python3 && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

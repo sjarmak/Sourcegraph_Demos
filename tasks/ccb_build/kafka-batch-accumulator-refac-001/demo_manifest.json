@@ -1,0 +1,46 @@
+{
+  "rank": 30,
+  "task_id": "kafka-batch-accumulator-refac-001",
+  "task_dir_name": "kafka-batch-accumulator-refac-001",
+  "suite": "ccb_build",
+  "source_ccb_path": "benchmarks/ccb_build/kafka-batch-accumulator-refac-001",
+  "delta": 0.36,
+  "baseline_reward": 0.32,
+  "mcp_reward": 0.68,
+  "run": "build_haiku_20260223_124805",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "cross_file_refactoring",
+  "language": "java",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "apache/kafka",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Rename RecordAccumulator to BatchAccumulator in the Kafka producer subsystem",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "ir_checklist",
+  "output_paths": [
+    "/logs/agent/solution.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/kafka--0753c489"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "apache/kafka",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Higher-quality context win"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "rank": 34,
+  "task_id": "grafana-table-panel-regression-001",
+  "task_dir_name": "grafana-table-panel-regression-001",
+  "suite": "ccb_debug",
+  "source_ccb_path": "benchmarks/ccb_debug/grafana-table-panel-regression-001",
+  "delta": 0.3,
+  "baseline_reward": 0.6,
+  "mcp_reward": 0.9,
+  "run": "debug_haiku_20260223_154724",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "regression_hunt",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "grafana/grafana",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Investigate dashboard migration v38 table panel regression in Grafana",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/logs/agent/investigation.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/grafana--26d36ec"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "grafana/grafana",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/grafana--8449a2e4.git . && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/grafana/grafana.git . && git checkout 26d36ec~1 && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Execution/quality win after similar retrieval"
+  ]
+}

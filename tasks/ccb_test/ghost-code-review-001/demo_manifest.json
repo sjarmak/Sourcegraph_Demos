@@ -1,0 +1,55 @@
+{
+  "rank": 19,
+  "task_id": "ghost-code-review-001",
+  "task_dir_name": "ghost-code-review-001",
+  "suite": "ccb_test",
+  "source_ccb_path": "benchmarks/ccb_test/ghost-code-review-001",
+  "delta": 0.62,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.62,
+  "run": "test_haiku_20260224_011816",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "code-review",
+  "language": "javascript",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "Ghost",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Review a Ghost PR for injected functional bugs and compliance violations, identifying defects with file and line-level localization",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/workspace/review.json"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/Ghost--b43bfc85"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "Ghost",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/Ghost--b43bfc85.git /workspace && cd /workspace && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/TryGhost/Ghost.git /workspace && cd /workspace && git checkout b43bfc85b719ab3971b83b5ef954601bf2d95fbf && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl python3 ripgrep && rm -rf /var/lib/apt/lists/*",
+    "if ! command -v node &> /dev/null; then curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y --no-install-recommends nodejs; fi",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl ripgrep && rm -rf /var/lib/apt/lists/*",
+    "if ! command -v node > /dev/null 2>&1; then curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y --no-install-recommends nodejs; fi"
+  ],
+  "ir_situations": [
+    "Retrieval rescue",
+    "Higher-quality context win"
+  ]
+}

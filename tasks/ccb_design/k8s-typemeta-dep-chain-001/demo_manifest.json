@@ -1,0 +1,80 @@
+{
+  "rank": 31,
+  "task_id": "k8s-typemeta-dep-chain-001",
+  "task_dir_name": "k8s-typemeta-dep-chain-001",
+  "suite": "ccb_design",
+  "source_ccb_path": "benchmarks/ccb_design/k8s-typemeta-dep-chain-001",
+  "delta": 0.34,
+  "baseline_reward": 0.33,
+  "mcp_reward": 0.67,
+  "run": "design_haiku_20260223_124652",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": null,
+  "language": null,
+  "difficulty": null,
+  "time_limit_sec": null,
+  "repo": null,
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": null,
+  "verification": {
+    "type": null,
+    "command": null
+  },
+  "reward_type": "partial_credit",
+  "output_paths": [
+    "/workspace/kubernetes/",
+    "/workspace/api/",
+    "/workspace/apimachinery/",
+    "/workspace/kubernetes/staging/src/k8s.io/api/core/v1/types.go",
+    "/workspace/chain.json"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/kubernetes--31bf3ed4",
+    "github.com/sg-evals/api--f32ed1d6",
+    "github.com/sg-evals/apimachinery--b2e9f88f"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "github.com/sg-evals/kubernetes--31bf3ed4",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/api--f32ed1d6",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/apimachinery--b2e9f88f",
+      "version": null
+    },
+    {
+      "repo": "/workspace/kubernetes/",
+      "version": null
+    },
+    {
+      "repo": "/workspace/api/",
+      "version": null
+    },
+    {
+      "repo": "/workspace/apimachinery/",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/kubernetes--31bf3ed4.git kubernetes",
+    "git clone --depth 1 https://github.com/sg-evals/api--f32ed1d6.git api",
+    "git clone --depth 1 https://github.com/sg-evals/apimachinery--b2e9f88f.git apimachinery",
+    "# Dockerfile.artifact_only",
+    "git clone https://github.com/kubernetes/kubernetes.git kubernetes && cd kubernetes && git checkout 31bf3ed48b91b67e5003d8df1b3bd0b918d1fb94",
+    "git clone https://github.com/kubernetes/api.git api && cd api && git checkout f32ed1d60cf0787a512bebd6c06a4b84ae0b7cc7",
+    "git clone https://github.com/kubernetes/apimachinery.git apimachinery && cd apimachinery && git checkout b2e9f88ff6d4c50c13061a53b1239c7707354eda"
+  ],
+  "dependency_hints": [
+    "apk add --no-cache git bash python3",
+    "apk add --no-cache git python3 curl bash"
+  ],
+  "ir_situations": []
+}

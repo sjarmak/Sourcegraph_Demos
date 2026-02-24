@@ -1,0 +1,56 @@
+{
+  "rank": 25,
+  "task_id": "aspnetcore-code-review-001",
+  "task_dir_name": "aspnetcore-code-review-001",
+  "suite": "ccb_test",
+  "source_ccb_path": "benchmarks/ccb_test/aspnetcore-code-review-001",
+  "delta": 0.46,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.46,
+  "run": "test_haiku_20260224_011816",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "code-review",
+  "language": "csharp",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "aspnetcore",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Review an ASP.NET Core PR for injected functional bugs and compliance violations in the Blazor DisplayName feature",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/workspace/review.json"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/aspnetcore--87525573"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "aspnetcore",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/aspnetcore--87525573.git /workspace && cd /workspace && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/dotnet/aspnetcore.git /workspace && cd /workspace && git checkout 875255737993775850f1f3650c10ddb43ef00ced && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl python3 ripgrep && rm -rf /var/lib/apt/lists/*",
+    "if ! command -v node &> /dev/null; then curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y --no-install-recommends nodejs; fi",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl patch python3 ripgrep && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl ripgrep && rm -rf /var/lib/apt/lists/*",
+    "if ! command -v node > /dev/null 2>&1; then curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y --no-install-recommends nodejs; fi"
+  ],
+  "ir_situations": [
+    "Retrieval rescue",
+    "Higher-quality context win"
+  ]
+}

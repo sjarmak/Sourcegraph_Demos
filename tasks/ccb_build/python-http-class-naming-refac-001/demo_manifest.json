@@ -1,0 +1,55 @@
+{
+  "rank": 55,
+  "task_id": "python-http-class-naming-refac-001",
+  "task_dir_name": "python-http-class-naming-refac-001",
+  "suite": "ccb_build",
+  "source_ccb_path": "benchmarks/ccb_build/python-http-class-naming-refac-001",
+  "delta": 0.04,
+  "baseline_reward": 0.84,
+  "mcp_reward": 0.88,
+  "run": "build_haiku_20260223_124805",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": null,
+  "language": null,
+  "difficulty": null,
+  "time_limit_sec": null,
+  "repo": null,
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": null,
+  "verification": {
+    "type": null,
+    "command": null
+  },
+  "reward_type": "semantic_similarity",
+  "output_paths": [
+    "/logs/agent/patch.diff"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/django--674eda1c",
+    "github.com/sg-evals/flask--798e006f",
+    "github.com/sg-evals/requests--421b8733"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "github.com/sg-evals/django--674eda1c",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/flask--798e006f",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/requests--421b8733",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl ca-certificates && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

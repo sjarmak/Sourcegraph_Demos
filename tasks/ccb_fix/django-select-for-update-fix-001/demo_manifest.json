@@ -1,0 +1,47 @@
+{
+  "rank": 46,
+  "task_id": "django-select-for-update-fix-001",
+  "task_dir_name": "django-select-for-update-fix-001",
+  "suite": "ccb_fix",
+  "source_ccb_path": "benchmarks/ccb_fix/django-select-for-update-fix-001",
+  "delta": 0.11,
+  "baseline_reward": 0.67,
+  "mcp_reward": 0.78,
+  "run": "fix_haiku_20260223_171232",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "bug_investigation",
+  "language": "python",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "django/django",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Trace the root cause of select_for_update(of) crash when combined with values_list() containing annotation expressions in Django ORM",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "ir_checklist",
+  "output_paths": [
+    "/logs/agent/solution.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/django--9e7cc2b6"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "django/django",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Speed-to-context win",
+    "Broader search win"
+  ]
+}

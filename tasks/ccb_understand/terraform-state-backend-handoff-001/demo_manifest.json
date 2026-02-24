@@ -1,0 +1,52 @@
+{
+  "rank": 18,
+  "task_id": "terraform-state-backend-handoff-001",
+  "task_dir_name": "terraform-state-backend-handoff-001",
+  "suite": "ccb_understand",
+  "source_ccb_path": "benchmarks/ccb_understand/terraform-state-backend-handoff-001",
+  "delta": 0.63,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.63,
+  "run": "understand_haiku_20260224_001815",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "team_handoff",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "hashicorp/terraform",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Team handoff for Terraform provider framework ownership",
+  "verification": {
+    "type": "custom",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "continuous",
+  "output_paths": [
+    "/logs/agent/onboarding.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/terraform--v1.9.0"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "hashicorp/terraform",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/terraform--7637a921.git .",
+    "# Dockerfile.artifact_only",
+    "git clone --depth 1 --branch v1.9.0 https://github.com/hashicorp/terraform.git ."
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Higher-quality context win"
+  ]
+}

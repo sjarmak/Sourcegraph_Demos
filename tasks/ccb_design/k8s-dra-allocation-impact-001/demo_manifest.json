@@ -1,0 +1,50 @@
+{
+  "rank": 4,
+  "task_id": "k8s-dra-allocation-impact-001",
+  "task_dir_name": "k8s-dra-allocation-impact-001",
+  "suite": "ccb_design",
+  "source_ccb_path": "benchmarks/ccb_design/k8s-dra-allocation-impact-001",
+  "delta": 0.9,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.9,
+  "run": "design_haiku_20260223_124652",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "impact_analysis",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "kubernetes/kubernetes",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Impact analysis of DRA AllocationMode API change in Kubernetes",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/logs/agent/investigation.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/kubernetes--2e534d6"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "kubernetes/kubernetes",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/kubernetes--2e534d6.git . && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/kubernetes/kubernetes.git . && git checkout 2e534d6 && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

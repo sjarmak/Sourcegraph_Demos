@@ -1,0 +1,50 @@
+{
+  "rank": 52,
+  "task_id": "kafka-vuln-reachability-001",
+  "task_dir_name": "kafka-vuln-reachability-001",
+  "suite": "ccb_secure",
+  "source_ccb_path": "benchmarks/ccb_secure/kafka-vuln-reachability-001",
+  "delta": 0.06,
+  "baseline_reward": 0.86,
+  "mcp_reward": 0.92,
+  "run": "secure_haiku_20260223_232545",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "reachability",
+  "language": "java",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "apache/kafka",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Trace SCRAM authentication nonce validation path in Apache Kafka",
+  "verification": {
+    "type": "custom",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "continuous",
+  "output_paths": [
+    "/logs/agent/triage.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/kafka--0cd95bc2"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "apache/kafka",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/kafka--0cd95bc2.git kafka && echo \"Kafka repository at pre-fix commit (vulnerable SCRAM nonce validation)\"",
+    "# Dockerfile.artifact_only",
+    "git clone https://github.com/apache/kafka.git && cd kafka && git checkout 0cd95bc2d82106ea9fb36061d8419f7fc9051d69 && git log -1 --oneline | grep -q \"0cd95bc\" && echo \"Kafka repository at pre-fix commit (vulnerable SCRAM nonce validation)\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git jq bc python3 && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

@@ -1,0 +1,58 @@
+{
+  "rank": 26,
+  "task_id": "kafka-flink-streaming-arch-001",
+  "task_dir_name": "kafka-flink-streaming-arch-001",
+  "suite": "ccb_design",
+  "source_ccb_path": "benchmarks/ccb_design/kafka-flink-streaming-arch-001",
+  "delta": 0.4,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.4,
+  "run": "design_haiku_20260223_124652",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "architectural_understanding",
+  "language": "java",
+  "difficulty": "hard",
+  "time_limit_sec": 1500,
+  "repo": "apache/kafka",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Trace streaming data flow from Apache Kafka through Apache Flink's connector framework: producer/consumer API, serialization boundary, and checkpoint-offset integration",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "ir_checklist",
+  "output_paths": [
+    "/logs/agent/solution.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/kafka--0753c489",
+    "github.com/sg-evals/flink--0cc95fcc"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "github.com/sg-evals/kafka--0753c489",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/flink--0cc95fcc",
+      "version": null
+    },
+    {
+      "repo": "apache/kafka",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/apache/kafka.git /workspace/kafka && cd /workspace/kafka && git checkout 0753c489afad403fb6e78fda4c4a380e46f500c0 && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
+    "git clone --filter=blob:none --no-checkout https://github.com/apache/flink.git /workspace/flink && cd /workspace/flink && git checkout 0cc95fcc145eddcfc87fc1b4ddf96ddd0f2ee15f && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

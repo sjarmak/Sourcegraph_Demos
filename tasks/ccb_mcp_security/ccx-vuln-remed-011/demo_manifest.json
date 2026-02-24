@@ -1,0 +1,74 @@
+{
+  "rank": 36,
+  "task_id": "CCX-vuln-remed-011",
+  "task_dir_name": "ccx-vuln-remed-011",
+  "suite": "ccb_mcp_security",
+  "source_ccb_path": "benchmarks/ccb_mcp_security/ccx-vuln-remed-011",
+  "delta": 0.25,
+  "baseline_reward": 0.75,
+  "mcp_reward": 1.0,
+  "run": "ccb_mcp_security_haiku_20260221_140913",
+  "baseline_config": "baseline-local-artifact",
+  "mcp_config": "mcp-remote-artifact",
+  "comparison_mode": "artifact",
+  "category": "vuln-remediation",
+  "language": "javascript",
+  "difficulty": "medium",
+  "time_limit_sec": 900,
+  "repo": "nodejs/node",
+  "mcp_unique": true,
+  "deepsearch_relevant": false,
+  "description": "CVE remediation: find package.json files declaring vulnerable cookie dependency",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/eval.sh"
+  },
+  "reward_type": "score",
+  "output_paths": [
+    "/workspace/answer.json"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/expressjs-express",
+    "github.com/sg-evals/lodash",
+    "github.com/sg-evals/nodejs-node",
+    "github.com/sg-evals/prisma-prisma"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "github.com/sg-evals/expressjs-express",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/lodash",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/nodejs-node",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/prisma-prisma",
+      "version": null
+    },
+    {
+      "repo": "nodejs/node",
+      "version": "v22.13.0"
+    },
+    {
+      "repo": "expressjs/express",
+      "version": "4.21.1"
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/node--v22.13.0.git /workspace/node",
+    "git clone --depth 1 https://github.com/sg-evals/express--4.21.1.git /workspace/express",
+    "git clone --depth 1 https://github.com/sg-evals/lodash /workspace/lodash",
+    "git clone --depth 1 https://github.com/sg-evals/prisma-prisma /workspace/prisma"
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl python3 && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

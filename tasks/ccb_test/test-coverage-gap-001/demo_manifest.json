@@ -1,0 +1,52 @@
+{
+  "rank": 5,
+  "task_id": "test-coverage-gap-001",
+  "task_dir_name": "test-coverage-gap-001",
+  "suite": "ccb_test",
+  "source_ccb_path": "benchmarks/ccb_test/test-coverage-gap-001",
+  "delta": 0.88,
+  "baseline_reward": 0.06,
+  "mcp_reward": 0.94,
+  "run": "test_haiku_20260224_011816",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "test-coverage-gap-analysis",
+  "language": "cpp",
+  "difficulty": "hard",
+  "time_limit_sec": 1800,
+  "repo": "envoyproxy/envoy",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Analyze test coverage gaps in Envoy's HTTP connection manager filter chain",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/workspace/coverage_analysis.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/envoy--1d0ba73a"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "source/common/http/filter_manager.cc",
+      "version": null
+    },
+    {
+      "repo": "source/common/http/header_map_impl.cc",
+      "version": null
+    },
+    {
+      "repo": "envoyproxy/envoy",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 ripgrep ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

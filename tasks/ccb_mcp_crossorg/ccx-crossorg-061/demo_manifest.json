@@ -1,0 +1,72 @@
+{
+  "rank": 22,
+  "task_id": "CCX-crossorg-061",
+  "task_dir_name": "ccx-crossorg-061",
+  "suite": "ccb_mcp_crossorg",
+  "source_ccb_path": "benchmarks/ccb_mcp_crossorg/ccx-crossorg-061",
+  "delta": 0.5,
+  "baseline_reward": 0.5,
+  "mcp_reward": 1.0,
+  "run": "ccb_mcp_crossorg_haiku_20260221_140913",
+  "baseline_config": "baseline-local-artifact",
+  "mcp_config": "mcp-remote-artifact",
+  "comparison_mode": "artifact",
+  "category": "cross-org-discovery",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 900,
+  "repo": "kubernetes/kubernetes",
+  "mcp_unique": true,
+  "deepsearch_relevant": false,
+  "description": "Cross-org interface implementation discovery: k8s storage.Interface",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/eval.sh"
+  },
+  "reward_type": "score",
+  "output_paths": [
+    "/workspace/answer.json"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/etcd-io-etcd",
+    "github.com/sg-evals/grafana",
+    "github.com/sg-evals/kubernetes-kubernetes"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "github.com/sg-evals/etcd-io-etcd",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/grafana",
+      "version": null
+    },
+    {
+      "repo": "github.com/sg-evals/kubernetes-kubernetes",
+      "version": null
+    },
+    {
+      "repo": "kubernetes/kubernetes",
+      "version": "v1.32.0"
+    },
+    {
+      "repo": "etcd-io/etcd",
+      "version": "v3.5.17"
+    },
+    {
+      "repo": "grafana/grafana",
+      "version": "v11.4.0"
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/kubernetes--v1.32.0.git /workspace/kubernetes",
+    "git clone --depth 1 https://github.com/sg-evals/grafana--v11.4.0.git /workspace/grafana",
+    "git clone --depth 1 https://github.com/sg-evals/etcd-io-etcd.git /workspace/etcd"
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl python3 golang-go && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

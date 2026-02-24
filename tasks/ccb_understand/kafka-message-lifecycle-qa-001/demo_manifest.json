@@ -1,0 +1,50 @@
+{
+  "rank": 44,
+  "task_id": "kafka-message-lifecycle-qa-001",
+  "task_dir_name": "kafka-message-lifecycle-qa-001",
+  "suite": "ccb_understand",
+  "source_ccb_path": "benchmarks/ccb_understand/kafka-message-lifecycle-qa-001",
+  "delta": 0.14,
+  "baseline_reward": 0.86,
+  "mcp_reward": 1.0,
+  "run": "understand_haiku_20260224_001815",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "dataflow_qa",
+  "language": "java",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "apache/kafka",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Trace Kafka message lifecycle: producer to broker to consumer",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/logs/agent/investigation.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/kafka--0753c489"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "apache/kafka",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/kafka--0753c489.git /workspace"
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl ca-certificates && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Speed-to-context win"
+  ]
+}

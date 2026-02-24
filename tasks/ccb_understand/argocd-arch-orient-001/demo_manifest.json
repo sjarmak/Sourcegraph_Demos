@@ -1,0 +1,53 @@
+{
+  "rank": 8,
+  "task_id": "argocd-arch-orient-001",
+  "task_dir_name": "argocd-arch-orient-001",
+  "suite": "ccb_understand",
+  "source_ccb_path": "benchmarks/ccb_understand/argocd-arch-orient-001",
+  "delta": 0.81,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.81,
+  "run": "understand_haiku_20260224_001815",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "codebase_orientation",
+  "language": "go",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "argoproj/argo-cd",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Argo CD codebase orientation \u2014 explore project architecture, core components, and sync strategies",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/logs/agent/onboarding.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/argo-cd--v2.13.2"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "argoproj/argo-cd",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/argo-cd--v2.13.2.git . && git config user.email \"agent@example.com\" && git config user.name \"Agent\"",
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/argoproj/argo-cd.git . && git checkout v2.13.2 && git config user.email \"agent@example.com\" && git config user.name \"Agent\""
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Higher-quality context win",
+    "Execution/quality win after similar retrieval"
+  ]
+}

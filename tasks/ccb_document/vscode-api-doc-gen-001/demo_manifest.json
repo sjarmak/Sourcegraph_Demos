@@ -1,0 +1,50 @@
+{
+  "rank": 58,
+  "task_id": "vscode-api-doc-gen-001",
+  "task_dir_name": "vscode-api-doc-gen-001",
+  "suite": "ccb_document",
+  "source_ccb_path": "benchmarks/ccb_document/vscode-api-doc-gen-001",
+  "delta": 0.02,
+  "baseline_reward": 0.98,
+  "mcp_reward": 1.0,
+  "run": "document_haiku_20260223_164240",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "api_reference",
+  "language": "typescript",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "microsoft/vscode",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Generate API reference documentation for VS Code's Diagnostic API",
+  "verification": {
+    "type": "custom",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "continuous",
+  "output_paths": [
+    "/workspace/documentation.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/vscode--69d110f2"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "microsoft/vscode",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [
+    "# Dockerfile",
+    "git clone --depth 1 https://github.com/sg-evals/vscode--69d110f2.git repo",
+    "# Dockerfile.artifact_only",
+    "git clone --filter=blob:none --no-checkout https://github.com/microsoft/vscode.git repo && cd repo && git checkout 69d110f2fe9decdf0b4f79f894f23b3c1967bcb2 && git sparse-checkout init --cone && git sparse-checkout set src/vs/vscode.d.ts src/vs/workbench extensions && git checkout"
+  ],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*",
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates python3 curl && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": []
+}

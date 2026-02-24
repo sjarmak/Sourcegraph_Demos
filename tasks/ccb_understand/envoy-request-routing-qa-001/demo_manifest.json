@@ -1,0 +1,46 @@
+{
+  "rank": 6,
+  "task_id": "envoy-request-routing-qa-001",
+  "task_dir_name": "envoy-request-routing-qa-001",
+  "suite": "ccb_understand",
+  "source_ccb_path": "benchmarks/ccb_understand/envoy-request-routing-qa-001",
+  "delta": 0.87,
+  "baseline_reward": 0.0,
+  "mcp_reward": 0.87,
+  "run": "understand_haiku_20260224_001815",
+  "baseline_config": "baseline-local-direct",
+  "mcp_config": "mcp-remote-direct",
+  "comparison_mode": "direct",
+  "category": "dataflow_qa",
+  "language": "cpp",
+  "difficulty": "hard",
+  "time_limit_sec": 1200,
+  "repo": "envoyproxy/envoy",
+  "mcp_unique": false,
+  "deepsearch_relevant": false,
+  "description": "Trace Envoy request routing: listener accept to upstream connection",
+  "verification": {
+    "type": "test",
+    "command": "bash /tests/test.sh"
+  },
+  "reward_type": "checklist",
+  "output_paths": [
+    "/logs/agent/investigation.md"
+  ],
+  "mcp_mirror_repos": [
+    "github.com/sg-evals/envoy--d7809ba2"
+  ],
+  "available_resource_repos": [
+    {
+      "repo": "envoyproxy/envoy",
+      "version": null
+    }
+  ],
+  "local_clone_commands": [],
+  "dependency_hints": [
+    "apt-get update && apt-get install -y --no-install-recommends git curl python3 python3-pip ripgrep ca-certificates && rm -rf /var/lib/apt/lists/*"
+  ],
+  "ir_situations": [
+    "Execution/quality win after similar retrieval"
+  ]
+}

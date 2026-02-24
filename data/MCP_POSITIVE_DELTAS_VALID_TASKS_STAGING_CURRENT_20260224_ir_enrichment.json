@@ -1,0 +1,926 @@
+{
+  "generated_at_utc": "2026-02-24T03:20:10.899060+00:00",
+  "source_reports": {
+    "mcp_positive_deltas": "runs/staging/MCP_POSITIVE_DELTAS_VALID_TASKS_STAGING_CURRENT_20260224.json",
+    "ir_analysis_pipeline_json": "runs/staging/IR_ANALYSIS_STAGING_20260224.json",
+    "ir_analysis_pipeline_markdown": "docs/ir_analysis_report.md"
+  },
+  "mcp_summary": {
+    "runs_total": 22,
+    "pairable_runs": 21,
+    "skipped_runs": 1,
+    "matched_pairs_total": 193,
+    "valid_pairs_total": 177,
+    "excluded_pairs_total": 16,
+    "positive_deltas_total": 62
+  },
+  "ir_pipeline_summary": {
+    "total_tasks_with_gt": 138,
+    "total_runs_analyzed": 263,
+    "total_in_aggregates": 241,
+    "excluded_low_confidence": 22,
+    "low_confidence_task_ids": [
+      "bustub-hyperloglog-impl-001",
+      "codecoverage-deps-install-001",
+      "envoy-migration-doc-gen-001",
+      "envoy-routeconfig-dep-chain-001",
+      "k8s-typemeta-dep-chain-001",
+      "kafka-vuln-reachability-001",
+      "llamacpp-file-modify-search-001",
+      "numpy-array-sum-perf-001",
+      "pandas-groupby-perf-001",
+      "sklearn-kmeans-perf-001",
+      "terraform-migration-doc-gen-001"
+    ],
+    "min_confidence": "medium",
+    "skipped_no_ground_truth": 63,
+    "skipped_no_transcript": 12,
+    "excluded_zero_mcp_sg": 0,
+    "excluded_zero_mcp_task_ids": [],
+    "confidence_breakdown_by_suite": {
+      "unknown": {
+        "high": 94,
+        "low": 22,
+        "medium": 147
+      }
+    }
+  },
+  "ir_pipeline_overall_by_config": {
+    "baseline-local-direct": {
+      "mrr": {
+        "mean": 0.3597,
+        "std": 0.4515,
+        "median": 0.0032,
+        "n": 115
+      },
+      "map_score": {
+        "mean": 0.2174,
+        "std": 0.3266,
+        "median": 0.0023,
+        "n": 115
+      },
+      "file_recall": {
+        "mean": 0.3394,
+        "std": 0.414,
+        "median": 0.0094,
+        "n": 115
+      },
+      "context_efficiency": {
+        "mean": 0.1871,
+        "std": 0.2852,
+        "median": 0.0044,
+        "n": 115
+      },
+      "precision@1": {
+        "mean": 0.313,
+        "std": 0.4658,
+        "median": 0.0,
+        "n": 115
+      },
+      "recall@1": {
+        "mean": 0.0649,
+        "std": 0.1539,
+        "median": 0.0,
+        "n": 115
+      },
+      "f1@1": {
+        "mean": 0.0959,
+        "std": 0.1868,
+        "median": 0.0,
+        "n": 115
+      },
+      "ndcg@1": {
+        "mean": 0.313,
+        "std": 0.4658,
+        "median": 0.0,
+        "n": 115
+      },
+      "precision@3": {
+        "mean": 0.2638,
+        "std": 0.3733,
+        "median": 0.0,
+        "n": 115
+      },
+      "recall@3": {
+        "mean": 0.182,
+        "std": 0.3068,
+        "median": 0.0,
+        "n": 115
+      },
+      "f1@3": {
+        "mean": 0.1805,
+        "std": 0.2704,
+        "median": 0.0,
+        "n": 115
+      },
+      "ndcg@3": {
+        "mean": 0.2985,
+        "std": 0.4005,
+        "median": 0.0,
+        "n": 115
+      },
+      "precision@5": {
+        "mean": 0.2191,
+        "std": 0.3179,
+        "median": 0.0,
+        "n": 115
+      },
+      "recall@5": {
+        "mean": 0.2354,
+        "std": 0.3642,
+        "median": 0.0,
+        "n": 115
+      },
+      "f1@5": {
+        "mean": 0.1897,
+        "std": 0.2758,
+        "median": 0.0,
+        "n": 115
+      },
+      "ndcg@5": {
+        "mean": 0.2902,
+        "std": 0.3813,
+        "median": 0.0,
+        "n": 115
+      },
+      "precision@10": {
+        "mean": 0.1357,
+        "std": 0.2057,
+        "median": 0.0,
+        "n": 115
+      },
+      "recall@10": {
+        "mean": 0.2689,
+        "std": 0.3843,
+        "median": 0.0,
+        "n": 115
+      },
+      "f1@10": {
+        "mean": 0.1532,
+        "std": 0.2173,
+        "median": 0.0,
+        "n": 115
+      },
+      "ndcg@10": {
+        "mean": 0.2719,
+        "std": 0.3593,
+        "median": 0.0,
+        "n": 115
+      },
+      "ttfr": {
+        "mean": 29.0,
+        "std": 41.0,
+        "median": 12.7,
+        "n": 52
+      },
+      "tt_all_r": {
+        "mean": 46.9,
+        "std": 60.5,
+        "median": 22.2,
+        "n": 23
+      },
+      "n_steps_to_first": {
+        "mean": 4.9,
+        "median": 3.0,
+        "n": 52
+      },
+      "_totals": {
+        "n_tasks": 115,
+        "mean_retrieved": 46.8,
+        "mean_ground_truth": 8.7,
+        "mean_overlap": 1.9
+      }
+    },
+    "mcp-remote-direct": {
+      "mrr": {
+        "mean": 0.3288,
+        "std": 0.4316,
+        "median": 0.0478,
+        "n": 126
+      },
+      "map_score": {
+        "mean": 0.1914,
+        "std": 0.3014,
+        "median": 0.0376,
+        "n": 126
+      },
+      "file_recall": {
+        "mean": 0.4376,
+        "std": 0.3963,
+        "median": 0.366,
+        "n": 126
+      },
+      "context_efficiency": {
+        "mean": 0.16,
+        "std": 0.2493,
+        "median": 0.0541,
+        "n": 126
+      },
+      "precision@1": {
+        "mean": 0.2778,
+        "std": 0.4497,
+        "median": 0.0,
+        "n": 126
+      },
+      "recall@1": {
+        "mean": 0.0846,
+        "std": 0.2221,
+        "median": 0.0,
+        "n": 126
+      },
+      "f1@1": {
+        "mean": 0.1084,
+        "std": 0.2388,
+        "median": 0.0,
+        "n": 126
+      },
+      "ndcg@1": {
+        "mean": 0.2778,
+        "std": 0.4497,
+        "median": 0.0,
+        "n": 126
+      },
+      "precision@3": {
+        "mean": 0.2011,
+        "std": 0.3268,
+        "median": 0.0,
+        "n": 126
+      },
+      "recall@3": {
+        "mean": 0.1431,
+        "std": 0.2816,
+        "median": 0.0,
+        "n": 126
+      },
+      "f1@3": {
+        "mean": 0.1369,
+        "std": 0.2298,
+        "median": 0.0,
+        "n": 126
+      },
+      "ndcg@3": {
+        "mean": 0.2463,
+        "std": 0.3797,
+        "median": 0.0,
+        "n": 126
+      },
+      "precision@5": {
+        "mean": 0.1571,
+        "std": 0.2624,
+        "median": 0.0,
+        "n": 126
+      },
+      "recall@5": {
+        "mean": 0.167,
+        "std": 0.3086,
+        "median": 0.0,
+        "n": 126
+      },
+      "f1@5": {
+        "mean": 0.1344,
+        "std": 0.2231,
+        "median": 0.0,
+        "n": 126
+      },
+      "ndcg@5": {
+        "mean": 0.2283,
+        "std": 0.3518,
+        "median": 0.0,
+        "n": 126
+      },
+      "precision@10": {
+        "mean": 0.104,
+        "std": 0.168,
+        "median": 0.0,
+        "n": 126
+      },
+      "recall@10": {
+        "mean": 0.2133,
+        "std": 0.345,
+        "median": 0.0,
+        "n": 126
+      },
+      "f1@10": {
+        "mean": 0.1186,
+        "std": 0.1828,
+        "median": 0.0,
+        "n": 126
+      },
+      "ndcg@10": {
+        "mean": 0.2203,
+        "std": 0.3295,
+        "median": 0.0,
+        "n": 126
+      },
+      "ttfr": {
+        "mean": 14.8,
+        "std": 27.8,
+        "median": 7.9,
+        "n": 89
+      },
+      "tt_all_r": {
+        "mean": 29.6,
+        "std": 50.6,
+        "median": 9.6,
+        "n": 29
+      },
+      "n_steps_to_first": {
+        "mean": 3.4,
+        "median": 2,
+        "n": 89
+      },
+      "_totals": {
+        "n_tasks": 126,
+        "mean_retrieved": 58.3,
+        "mean_ground_truth": 9.0,
+        "mean_overlap": 3.1
+      }
+    }
+  },
+  "staging_direct_paired_ir_effectiveness": {
+    "all_pairs_medium_plus": {
+      "n_pairs": 114,
+      "d_mrr": {
+        "n": 114,
+        "mean": -0.04513508771929824,
+        "median": 0.0,
+        "positive_share": 0.3157894736842105,
+        "negative_share": 0.2894736842105263
+      },
+      "d_file_recall": {
+        "n": 114,
+        "mean": 0.10584561403508772,
+        "median": 0.0,
+        "positive_share": 0.3508771929824561,
+        "negative_share": 0.10526315789473684
+      },
+      "d_context_eff": {
+        "n": 114,
+        "mean": -0.042034210526315785,
+        "median": 0.0,
+        "positive_share": 0.3684210526315789,
+        "negative_share": 0.3508771929824561
+      },
+      "d_ttfr": {
+        "n": 48,
+        "mean": -20.477083333333333,
+        "median": -5.999999999999998,
+        "positive_share": 0.25,
+        "negative_share": 0.75,
+        "improved_share_lower_better": 0.75
+      },
+      "d_tt_all_r": {
+        "n": 18,
+        "mean": -14.588888888888885,
+        "median": -5.2,
+        "positive_share": 0.3333333333333333,
+        "negative_share": 0.6666666666666666,
+        "improved_share_lower_better": 0.6666666666666666
+      },
+      "d_steps": {
+        "n": 48,
+        "mean": -2.7916666666666665,
+        "median": -2.0,
+        "positive_share": 0.25,
+        "negative_share": 0.6875,
+        "improved_share_lower_better": 0.6875
+      },
+      "d_agent_ttfr": {
+        "n": 46,
+        "mean": -20.23695652173913,
+        "median": -4.35,
+        "positive_share": 0.21739130434782608,
+        "negative_share": 0.7608695652173914,
+        "improved_share_lower_better": 0.7608695652173914
+      },
+      "d_cost_b1": {
+        "n": 48,
+        "mean": 0.20458031249999997,
+        "median": 0.07372749999999997,
+        "positive_share": 0.5625,
+        "negative_share": 0.4375,
+        "improved_share_lower_better": 0.4375
+      },
+      "d_tokens_b1": {
+        "n": 48,
+        "mean": 512.25,
+        "median": -7179.5,
+        "positive_share": 0.4583333333333333,
+        "negative_share": 0.5416666666666666,
+        "improved_share_lower_better": 0.5416666666666666
+      },
+      "d_outtok_b1": {
+        "n": 48,
+        "mean": 6.979166666666667,
+        "median": -9.5,
+        "positive_share": 0.22916666666666666,
+        "negative_share": 0.7083333333333334,
+        "improved_share_lower_better": 0.7083333333333334
+      }
+    },
+    "positive_mcp_delta_pairs_medium_plus": {
+      "n_pairs": 35,
+      "d_mrr": {
+        "n": 35,
+        "mean": -0.0086057142857143,
+        "median": 0.0,
+        "positive_share": 0.4,
+        "negative_share": 0.2857142857142857
+      },
+      "d_file_recall": {
+        "n": 35,
+        "mean": 0.16078,
+        "median": 0.0,
+        "positive_share": 0.4857142857142857,
+        "negative_share": 0.08571428571428572
+      },
+      "d_context_eff": {
+        "n": 35,
+        "mean": 0.009657142857142855,
+        "median": 0.0,
+        "positive_share": 0.45714285714285713,
+        "negative_share": 0.3142857142857143
+      },
+      "d_ttfr": {
+        "n": 13,
+        "mean": -12.415384615384616,
+        "median": -4.8,
+        "positive_share": 0.23076923076923078,
+        "negative_share": 0.7692307692307693,
+        "improved_share_lower_better": 0.7692307692307693
+      },
+      "d_tt_all_r": {
+        "n": 3,
+        "mean": 43.699999999999996,
+        "median": -4.300000000000001,
+        "positive_share": 0.3333333333333333,
+        "negative_share": 0.6666666666666666,
+        "improved_share_lower_better": 0.6666666666666666
+      },
+      "d_steps": {
+        "n": 13,
+        "mean": -2.076923076923077,
+        "median": -1,
+        "positive_share": 0.38461538461538464,
+        "negative_share": 0.5384615384615384,
+        "improved_share_lower_better": 0.5384615384615384
+      },
+      "d_agent_ttfr": {
+        "n": 13,
+        "mean": -11.615384615384611,
+        "median": -4.199999999999999,
+        "positive_share": 0.23076923076923078,
+        "negative_share": 0.7692307692307693,
+        "improved_share_lower_better": 0.7692307692307693
+      },
+      "d_cost_b1": {
+        "n": 13,
+        "mean": 0.4068269999999999,
+        "median": 0.378989,
+        "positive_share": 0.6923076923076923,
+        "negative_share": 0.3076923076923077,
+        "improved_share_lower_better": 0.3076923076923077
+      },
+      "d_tokens_b1": {
+        "n": 13,
+        "mean": 30860.846153846152,
+        "median": 69735,
+        "positive_share": 0.6153846153846154,
+        "negative_share": 0.38461538461538464,
+        "improved_share_lower_better": 0.38461538461538464
+      },
+      "d_outtok_b1": {
+        "n": 13,
+        "mean": 65.07692307692308,
+        "median": -10,
+        "positive_share": 0.23076923076923078,
+        "negative_share": 0.7692307692307693,
+        "improved_share_lower_better": 0.7692307692307693
+      }
+    },
+    "correlations": {
+      "all_valid_direct_reward_delta_vs_mrr_delta": {
+        "n": 113,
+        "rho": 0.130156,
+        "p_value": 0.166651
+      },
+      "all_valid_direct_reward_delta_vs_file_recall_delta": {
+        "n": 113,
+        "rho": 0.170325,
+        "p_value": 0.068592
+      },
+      "all_valid_direct_mcp_reward_vs_mcp_file_recall": {
+        "n": 113,
+        "rho": 0.10697,
+        "p_value": 0.257002
+      },
+      "positive_direct_reward_delta_vs_mrr_delta": {
+        "n": 35,
+        "rho": 0.067256,
+        "p_value": 0.698584
+      },
+      "positive_direct_reward_delta_vs_file_recall_delta": {
+        "n": 35,
+        "rho": -0.140684,
+        "p_value": 0.414337
+      }
+    }
+  },
+  "situation_buckets": {
+    "retrieval_rescue": [
+      {
+        "task_name": "envoy-ext-authz-handoff-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.83,
+        "d_mrr": 1.0,
+        "d_file_recall": 0.4,
+        "d_context_efficiency": 0.1739,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "kafka-producer-bufpool-fix-001",
+        "suite": "ccb_fix",
+        "run": "fix_haiku_20260224_011821",
+        "reward_delta": 0.78,
+        "d_mrr": 1.0,
+        "d_file_recall": 0.5556,
+        "d_context_efficiency": 0.2632,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "ghost-code-review-001",
+        "suite": "ccb_test",
+        "run": "test_haiku_20260224_011816",
+        "reward_delta": 0.62,
+        "d_mrr": 1.0,
+        "d_file_recall": 1.0,
+        "d_context_efficiency": 0.039,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "aspnetcore-code-review-001",
+        "suite": "ccb_test",
+        "run": "test_haiku_20260224_011816",
+        "reward_delta": 0.46,
+        "d_mrr": 1.0,
+        "d_file_recall": 1.0,
+        "d_context_efficiency": 0.069,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      }
+    ],
+    "speed_to_context_win": [
+      {
+        "task_name": "flipt-flagexists-refactor-001",
+        "suite": "ccb_build",
+        "run": "build_haiku_20260223_124805",
+        "reward_delta": 0.3,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.098,
+        "d_ttfr": -51.2,
+        "d_agent_time_to_first_relevant": -51.5
+      },
+      {
+        "task_name": "django-repo-scoped-access-001",
+        "suite": "ccb_secure",
+        "run": "secure_haiku_20260223_232545",
+        "reward_delta": 0.19999999999999996,
+        "d_mrr": -0.3571,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": -0.21,
+        "d_ttfr": -24.3,
+        "d_agent_time_to_first_relevant": -25.7
+      },
+      {
+        "task_name": "kafka-message-lifecycle-qa-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.14,
+        "d_mrr": -0.6667000000000001,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": -0.07640000000000001,
+        "d_ttfr": -65.80000000000001,
+        "d_agent_time_to_first_relevant": -64.6
+      },
+      {
+        "task_name": "django-select-for-update-fix-001",
+        "suite": "ccb_fix",
+        "run": "fix_haiku_20260223_171232",
+        "reward_delta": 0.10999999999999999,
+        "d_mrr": -0.95,
+        "d_file_recall": 0.2223,
+        "d_context_efficiency": -0.4276,
+        "d_ttfr": -13.500000000000002,
+        "d_agent_time_to_first_relevant": -8.1
+      },
+      {
+        "task_name": "k8s-dra-scheduler-event-fix-001",
+        "suite": "ccb_fix",
+        "run": "fix_haiku_20260223_171232",
+        "reward_delta": 0.06999999999999995,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.25,
+        "d_context_efficiency": -0.14549999999999996,
+        "d_ttfr": -5.8999999999999995,
+        "d_agent_time_to_first_relevant": -7.2
+      },
+      {
+        "task_name": "postgres-client-auth-audit-001",
+        "suite": "ccb_secure",
+        "run": "secure_haiku_20260223_232545",
+        "reward_delta": 0.030000000000000027,
+        "d_mrr": -0.6667000000000001,
+        "d_file_recall": 0.125,
+        "d_context_efficiency": -0.6563,
+        "d_ttfr": -7.2,
+        "d_agent_time_to_first_relevant": -4.1
+      }
+    ],
+    "recall_up_efficiency_down": [
+      {
+        "task_name": "cilium-project-orient-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.96,
+        "d_mrr": -0.9667,
+        "d_file_recall": 0.0476,
+        "d_context_efficiency": -0.165,
+        "d_ttfr": -4.8,
+        "d_agent_time_to_first_relevant": -5.0
+      },
+      {
+        "task_name": "strata-fx-european-refac-001",
+        "suite": "ccb_build",
+        "run": "build_haiku_20260223_124805",
+        "reward_delta": 0.48000000000000004,
+        "d_mrr": -0.9565,
+        "d_file_recall": 0.2858,
+        "d_context_efficiency": -0.1878,
+        "d_ttfr": 11.900000000000002,
+        "d_agent_time_to_first_relevant": 13.399999999999999
+      },
+      {
+        "task_name": "django-select-for-update-fix-001",
+        "suite": "ccb_fix",
+        "run": "fix_haiku_20260223_171232",
+        "reward_delta": 0.10999999999999999,
+        "d_mrr": -0.95,
+        "d_file_recall": 0.2223,
+        "d_context_efficiency": -0.4276,
+        "d_ttfr": -13.500000000000002,
+        "d_agent_time_to_first_relevant": -8.1
+      },
+      {
+        "task_name": "k8s-dra-scheduler-event-fix-001",
+        "suite": "ccb_fix",
+        "run": "fix_haiku_20260223_171232",
+        "reward_delta": 0.06999999999999995,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.25,
+        "d_context_efficiency": -0.14549999999999996,
+        "d_ttfr": -5.8999999999999995,
+        "d_agent_time_to_first_relevant": -7.2
+      },
+      {
+        "task_name": "postgres-client-auth-audit-001",
+        "suite": "ccb_secure",
+        "run": "secure_haiku_20260223_232545",
+        "reward_delta": 0.030000000000000027,
+        "d_mrr": -0.6667000000000001,
+        "d_file_recall": 0.125,
+        "d_context_efficiency": -0.6563,
+        "d_ttfr": -7.2,
+        "d_agent_time_to_first_relevant": -4.1
+      }
+    ],
+    "efficiency_up_with_win": [
+      {
+        "task_name": "terraform-plan-pipeline-qa-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.95,
+        "d_mrr": 0.0059,
+        "d_file_recall": 0.1667,
+        "d_context_efficiency": 0.0031,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "envoy-ext-authz-handoff-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.83,
+        "d_mrr": 1.0,
+        "d_file_recall": 0.4,
+        "d_context_efficiency": 0.1739,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "argocd-arch-orient-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.81,
+        "d_mrr": 0.018500000000000003,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0006999999999999992,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "kafka-producer-bufpool-fix-001",
+        "suite": "ccb_fix",
+        "run": "fix_haiku_20260224_011821",
+        "reward_delta": 0.78,
+        "d_mrr": 1.0,
+        "d_file_recall": 0.5556,
+        "d_context_efficiency": 0.2632,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "terraform-state-backend-handoff-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.63,
+        "d_mrr": 0.0345,
+        "d_file_recall": 0.1176,
+        "d_context_efficiency": 0.0476,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "ghost-code-review-001",
+        "suite": "ccb_test",
+        "run": "test_haiku_20260224_011816",
+        "reward_delta": 0.62,
+        "d_mrr": 1.0,
+        "d_file_recall": 1.0,
+        "d_context_efficiency": 0.039,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "aspnetcore-code-review-001",
+        "suite": "ccb_test",
+        "run": "test_haiku_20260224_011816",
+        "reward_delta": 0.46,
+        "d_mrr": 1.0,
+        "d_file_recall": 1.0,
+        "d_context_efficiency": 0.069,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "kafka-batch-accumulator-refac-001",
+        "suite": "ccb_build",
+        "run": "build_haiku_20260223_124805",
+        "reward_delta": 0.36000000000000004,
+        "d_mrr": 0.0,
+        "d_file_recall": -0.45459999999999995,
+        "d_context_efficiency": 0.13460000000000005,
+        "d_ttfr": -0.5,
+        "d_agent_time_to_first_relevant": -2.0
+      },
+      {
+        "task_name": "openlibrary-fntocli-adapter-fix-001",
+        "suite": "ccb_fix",
+        "run": "fix_haiku_20260223_171232",
+        "reward_delta": 0.33330000000000004,
+        "d_mrr": 1.0,
+        "d_file_recall": 0.0714,
+        "d_context_efficiency": 0.5,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "flipt-flagexists-refactor-001",
+        "suite": "ccb_build",
+        "run": "build_haiku_20260223_124805",
+        "reward_delta": 0.3,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.098,
+        "d_ttfr": -51.2,
+        "d_agent_time_to_first_relevant": -51.5
+      }
+    ],
+    "retrieval_flat_but_outcome_up": [
+      {
+        "task_name": "numpy-dtype-localize-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.9333,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "envoy-request-routing-qa-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.87,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "argocd-arch-orient-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.81,
+        "d_mrr": 0.018500000000000003,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0006999999999999992,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "etcd-grpc-api-upgrade-001",
+        "suite": "ccb_design",
+        "run": "design_haiku_20260223_124652",
+        "reward_delta": 0.7143,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "grpcurl-transitive-vuln-001",
+        "suite": "ccb_secure",
+        "run": "secure_haiku_20260223_232545",
+        "reward_delta": 0.67,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "openlibrary-solr-boolean-fix-001",
+        "suite": "ccb_fix",
+        "run": "fix_haiku_20260223_171232",
+        "reward_delta": 0.6667,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "grafana-table-panel-regression-001",
+        "suite": "ccb_debug",
+        "run": "debug_haiku_20260223_154724",
+        "reward_delta": 0.30000000000000004,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "flipt-flagexists-refactor-001",
+        "suite": "ccb_build",
+        "run": "build_haiku_20260223_124805",
+        "reward_delta": 0.3,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.098,
+        "d_ttfr": -51.2,
+        "d_agent_time_to_first_relevant": -51.5
+      },
+      {
+        "task_name": "envoy-cve-triage-001",
+        "suite": "ccb_secure",
+        "run": "secure_haiku_20260223_232545",
+        "reward_delta": 0.09999999999999998,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      },
+      {
+        "task_name": "cilium-ebpf-fault-qa-001",
+        "suite": "ccb_understand",
+        "run": "understand_haiku_20260224_001815",
+        "reward_delta": 0.04999999999999993,
+        "d_mrr": 0.0,
+        "d_file_recall": 0.0,
+        "d_context_efficiency": 0.0,
+        "d_ttfr": null,
+        "d_agent_time_to_first_relevant": null
+      }
+    ]
+  }
+}
